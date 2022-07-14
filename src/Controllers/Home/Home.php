@@ -18,7 +18,7 @@ class Home extends ControllerComHtml implements InterfaceControladorRequisicao
    
     public function processaRequisicao(): void
     {
-        echo $this->renderizaHtml('home.php', [
+        echo $this->renderizaHtml('/home/home.php', [
             'titulo' => 'Lista de Ano'
         ]);
     }

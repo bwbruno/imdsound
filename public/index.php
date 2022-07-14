@@ -19,10 +19,6 @@ if (!array_key_exists($caminho, $rotas)) {
 
 $classeControladora = $rotas[$caminho];
 
-echo $rotas;
-echo $caminho;
-echo $classeControladora;
-
 /** @var InterfaceControladorRequisicao $controlador */
 $controlador = new $classeControladora();
 $controlador->processaRequisicao();
