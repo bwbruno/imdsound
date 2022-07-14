@@ -19,7 +19,8 @@ class ListarUsuarios extends ControllerComHtml implements InterfaceControladorRe
     {
         echo $this->renderizaHtml('users/listar-usuarios.php', [
             'usuarios' => $this->repositorioDeUsuarios->allUsers(),
-            'titulo' => 'Lista de usuários',
+            'titulo' => 'Lista de Ano',
+            'titulo2' => 'Lista de2',
         ]);
     }
 }
