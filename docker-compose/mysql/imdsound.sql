@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `imdsound`.`artist` (
   `user_email` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
-  `admin_id_admin` INT NOT NULL,
+  `admin_id_admin` INT,
   PRIMARY KEY (`user_email`),
   INDEX `fk_Artist_Admin1_idx` (`admin_id_admin` ASC),
   INDEX `fk_Artist_User1_idx` (`user_email` ASC),
