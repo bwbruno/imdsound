@@ -1,6 +1,6 @@
 <?php
 
-namespace IMDSound\Controllers\Home;
+namespace IMDSound\Controllers\User;
 
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
@@ -8,49 +8,54 @@ use IMDSound\Infra\ConnectionCreator;
 use IMDSound\Infra\PdoUserRepository;
 use IMDSound\Models\User;
 
-class UserCreate extends ControllerComHtml implements InterfaceControladorRequisicao
+class UserCreateController extends ControllerComHtml implements InterfaceControladorRequisicao
 {
 
     private $userRepository;
+    private $pdo;
 
     public function __construct()
     {
-        $pdo = ConnectionCreator::createConnection();
-        $this->userRepository = new PdoUserRepository($pdo);
+        $this->pdo = ConnectionCreator::createConnection();
+        $this->userRepository = new PdoUserRepository($this->pdo);
     }
 
    
     public function processaRequisicao(): void
     {
+
+        error_reporting(E_ALL);
+        ini_set('display_errors', '1');
         
+        $inputs = [
+            'email' => FILTER_SANITIZE_EMAIL,
+            'password' => FILTER_SANITIZE_STRING,
+            'name' => FILTER_SANITIZE_STRING,
+            'country'=> FILTER_SANITIZE_STRING,
+            'phone_number'=> FILTER_SANITIZE_STRING
+        ];
 
-        $email = filter_input(
-            INPUT_POST,
-            'descricao',
-            FILTER_SANITIZE_STRING
+        $filteredInputs = filter_input_array(INPUT_POST, $inputs);
+        $sha1Password = sha1($filteredInputs['password'] . 'teste');        
+        $user = new User(
+            $filteredInputs['email'], 
+            $filteredInputs['password'],
+            $filteredInputs['name'], 
+            $filteredInputs['country'], 
+            $filteredInputs['phone_number']
         );
+              
 
-
-        $id = filter_input(
-            INPUT_GET,
-            'id',
-            FILTER_VALIDATE_INT
-        );
-
-        $user = new User($id, $name);
-
-
-        if (!is_null($id) && $id !== false) {
-            $user->setId($id);
-            $this->entityManager->merge($user);
-            $_SESSION['mensagem'] = 'Curso atualizado com sucesso';
-        } else {
-            $this->entityManager->persist($user);
-            $_SESSION['mensagem'] = 'Curso inserido com sucesso';
+        $this->pdo->beginTransaction();
+        try {
+            $this->userRepository->save($user);
+            $this->pdo->commit();
+        } catch(\PDOException $e) {
+            echo $e->getMessage();
+            $this->pdo->rollBack();
         }
-        $_SESSION['tipo_mensagem'] = 'success';
 
-        $this->entityManager->flush();
+        exit();
 
         header('Location: /', true, 302);
     }

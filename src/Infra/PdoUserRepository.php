@@ -17,7 +17,7 @@ class PdoUserRepository implements UserRepository
 
     public function allUsers(): array
     {
-        $sqlQuery = 'SELECT * FROM users;';
+        $sqlQuery = 'SELECT * FROM user;';
         $stmt = $this->connection->query($sqlQuery);
 
         return $this->hydrateUserList($stmt);
@@ -30,8 +30,11 @@ class PdoUserRepository implements UserRepository
 
         foreach ($userDataList as $userData) {
             $userList[] = new User(
-                $userData['id'],
-                $userData['name']
+                $userData['email'],
+                $userData['password'],
+                $userData['name'],
+                $userData['country'],
+                $userData['phone_number']
             );
         }
 
@@ -40,24 +43,30 @@ class PdoUserRepository implements UserRepository
 
     public function save(User $user): bool
     {
-        if ($user->id() === null) {
-            return $this->insert($user);
-        }
-
-        return $this->update($user);
+           
+        return $this->insert($user);
+        //return $this->update($user);
     }
 
     private function insert(User $user): bool
     {
-        $insertQuery = 'INSERT INTO users (name) VALUES (:name);';
+
+        $insertQuery = 'INSERT INTO user (email, password, name, country, phone_number) VALUES (:email, :password, :name, :country, :phone_number);';
+
         $stmt = $this->connection->prepare($insertQuery);
+        
+
 
         $success = $stmt->execute([
+            ':email' => $user->email(),
+            ':password' => $user->password(),
             ':name' => $user->name(),
+            ':country' => $user->country(),
+            ':phone_number' => $user->phone_number(),
         ]);
 
         if ($success) {
-            $user->defineId($this->connection->lastInsertId());
+           $user->defineEmail($this->connection->lastInsertId());
         }
 
         return $success;
@@ -68,7 +77,7 @@ class PdoUserRepository implements UserRepository
         $updateQuery = 'UPDATE users SET name = :name WHERE id = :id;';
         $stmt = $this->connection->prepare($updateQuery);
         $stmt->bindValue(':name', $user->name());
-        $stmt->bindValue(':id', $user->id(), PDO::PARAM_INT);
+        $stmt->bindValue(':id', $user->email(), PDO::PARAM_INT);
 
         return $stmt->execute();
     }
@@ -76,7 +85,7 @@ class PdoUserRepository implements UserRepository
     public function remove(User $user): bool
     {
         $stmt = $this->connection->prepare('DELETE FROM users WHERE id = ?;');
-        $stmt->bindValue(1, $user->id(), PDO::PARAM_INT);
+        $stmt->bindValue(1, $user->email(), PDO::PARAM_INT);
 
         return $stmt->execute();
     }

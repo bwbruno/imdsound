@@ -8,12 +8,14 @@
                 <div class="sign-grids">
                     <div class="sign">
                         <div class="sign-right">
-                            <form action="criar-conta" method="post">
+                            <form action="/user/create" method="post">
 
                                 <h3>Crie sua conta </h3>
-                                <input type="text" value="Nome" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-                                <input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email id';}" required="">
-                                <input type="password" value="Senha" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                                <input name="name" type="text" value="Nome" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required>
+                                <input name="email" type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required>
+                                <input name="password" type="password" value="Senha" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required>
+                                <input name="country" type="text" value="Pais" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Country';}" required>
+                                <input name="phone_number" type="text" value="Telefone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone_number';}" required>
 
                                 <input type="submit" value="CRIAR CONTA" >
                             </form>
