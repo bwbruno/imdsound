@@ -2,6 +2,7 @@
 
 namespace IMDSound\Infra;
 
+use IMDSound\Models\Artist;
 use IMDSound\Models\User;
 use IMDSound\Repository\UserRepository;
 use PDO;
@@ -99,5 +100,24 @@ class PdoUserRepository implements UserRepository
             $userData['country'],
             $userData['phone_number']
         );
+    }
+
+    public function usersWithArtist(): array
+    {
+        $sqlQuery = 'SELECT u.*, a.admin_id_admin FROM user u LEFT JOIN artist a ON a.user_email = u.email;';
+        $stmt = $this->connection->query($sqlQuery);
+        $result = $stmt->fetchAll();
+        $userWithArtistList = [];
+
+        foreach ($result as $row) {
+            $user = $this->hydrateUser($row);
+            if(isset($row['admin_id_admin'])) {
+                $artist = new Artist($row['email'], $row['admin_id_admin']);
+                $user->setArtist($artist);
+            }
+            $userWithArtistList[] = $user;
+        }
+
+        return $userWithArtistList;
     }
 }

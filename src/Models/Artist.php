@@ -2,18 +2,16 @@
 
 namespace IMDSound\Models;
 
-class Artist
+class Artist implements \JsonSerializable
 {
     private $user_email;
-    private $name;
-    private $description;
+    private $name = 'sem nome';
+    private $description = 'sem descricao';
     private $admin_id_admin;
 
-    public function __construct($user_email, $name, $description, $admin_id_admin)
+    public function __construct($user_email, $admin_id_admin)
     {
         $this->user_email = $user_email;
-        $this->name = $name;
-        $this->description = $description;
         $this->admin_id_admin = $admin_id_admin;
     }
 
@@ -26,7 +24,7 @@ class Artist
         $this->user_email = $user_email;
     }
 
-    public function email(): ?string
+    public function user_email(): ?string
     {
         return $this->user_email;
     }
@@ -39,5 +37,20 @@ class Artist
     public function description(): string
     {
         return $this->description;
+    }
+
+    public function admin_id_admin()
+    {
+        return $this->admin_id_admin;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'user_email' => $this->user_email,
+            'name' => $this->name,
+            'description' => $this->description,
+            'admin_id_admin' => $this->admin_id_admin,
+        ];
     }
 }

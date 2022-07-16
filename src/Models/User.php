@@ -10,9 +10,8 @@ class User
     private $name;
     private $country;
     private $phone_number;
-    private Artist $artist;
-    private Playlist $playlists;
-
+    private ?Artist $artist;
+    private ?Playlist $playlists;
 
     public function __construct($email, $password, $name, $country, $phone_number)
     {
@@ -56,4 +55,15 @@ class User
     {
         return $this->phone_number;
     }
+
+    public function setArtist(Artist $a)
+    {
+        return $this->artist = $a;
+    }
+
+    public function isArtist()
+    {
+        return isset($this->artist);
+    }
+
 }

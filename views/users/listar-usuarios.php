@@ -12,7 +12,7 @@
 				<div class="inner-content">
                     <div class="tittle-head two">
                         <h3 class="tittle">
-                            Usuários
+                            <?= $title ?>
                             <a class="new btn btn-primary btn-sm" href="#" role="button">Adicionar</a>
                         </h3>
                         <div class="clearfix"> </div>
@@ -25,6 +25,7 @@
 							<th>Email</th>
 							<th>Nome</th>
 							<th>Senha</th>
+							<th>Artista?</th>
 							<th>Ações</th>
 						</tr>
 						</thead>
@@ -35,6 +36,16 @@
                                     <td><?= $usuario->email(); ?></td>
                                     <td><?= $usuario->name(); ?></td>
                                     <td><?= $usuario->password(); ?></td>
+                                    <td>
+                                    <select id="artista" name="artista">
+                                        <option value="nao">Não</option>
+                                        <option
+                                                value="<?= $usuario->email(); ?>"
+                                            <?= $usuario->isArtist() ? 'selected' : '' ?>>
+                                            Sim
+                                        </option>
+                                    </select>
+                                    </td>
                                     <td>
                                         <span>
                                             <a href="/user?id=<?= $usuario->email(); ?>" class="btn btn-info btn-sm">
@@ -55,5 +66,24 @@
 			</div>
 		</div>
 	<?php include __DIR__ . '/../components/footer-section.php'; ?>
+
+    <script>
+        $('select#artista').change(function(){
+            $.ajax({
+                type: 'POST',
+                url: 'artist/promotion',
+                data: { 'email': $(this).val() },
+                success: function(response){
+                    alert(response);
+                    //alert(JSON.parse(response).user_email + ' promovido.');
+                    return true;
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                },
+                dataType: 'html'
+            });
+        });
+    </script>
 
 <?php include __DIR__ . '/../layouts/fim-html.php'; ?>

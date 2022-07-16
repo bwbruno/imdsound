@@ -42,7 +42,6 @@ class UserCreateController extends ControllerComHtml implements InterfaceControl
             $filteredInputs['country'], 
             $filteredInputs['phone_number']
         );
-              
 
         $this->pdo->beginTransaction();
         try {
@@ -53,6 +52,6 @@ class UserCreateController extends ControllerComHtml implements InterfaceControl
             $this->pdo->rollBack();
         }
 
-        header('Location: /', true, 302);
+        header('Location: /users', true, 302);
     }
 }

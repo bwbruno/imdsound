@@ -35,7 +35,6 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'pass');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +115,6 @@ CREATE TABLE `artist` (
 
 LOCK TABLES `artist` WRITE;
 /*!40000 ALTER TABLE `artist` DISABLE KEYS */;
-INSERT INTO `artist` VALUES ('andre@email.com','sem nome','sem descricao',1),('bru@email.com','sem nome','sem descricao',1),('bruno@gmail.com','happy','soluta',1);
 /*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,7 +481,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('andre@email.com','6f6fa3613fa06d0e5f7b02b3a6266807e27e6a79','andre','oioi','oioi'),('bru@email.com','asdfasdf','adadfd','adfadf','asdfasdf'),('bruno@gmail.com','1234','brunowagner','Oi','oi'),('caito@ok.com','2651c2a44c389403c19ba8e93d90b3093cb50449','Couto','fuifui','fiufiu'),('outro@google.com','d247d73fd2de0a03f9dbf1e79c2c3f266c7ae2f0','Outro','okok','okok');
+INSERT INTO `user` VALUES ('andre@email.com','6f6fa3613fa06d0e5f7b02b3a6266807e27e6a79','andre','oioi','oioi'),('bru@email.com','asdfasdf','adadfd','adfadf','asdfasdf'),('bruno@gmail.com','1234','brunowagner','Oi','oi');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -551,4 +549,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-16 20:01:41
+-- Dump completed on 2022-07-16 11:47:07
