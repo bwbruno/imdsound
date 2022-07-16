@@ -24,9 +24,6 @@ class UserCreateController extends ControllerComHtml implements InterfaceControl
     public function processaRequisicao(): void
     {
 
-        error_reporting(E_ALL);
-        ini_set('display_errors', '1');
-        
         $inputs = [
             'email' => FILTER_SANITIZE_EMAIL,
             'password' => FILTER_SANITIZE_STRING,
@@ -36,10 +33,11 @@ class UserCreateController extends ControllerComHtml implements InterfaceControl
         ];
 
         $filteredInputs = filter_input_array(INPUT_POST, $inputs);
-        $sha1Password = sha1($filteredInputs['password'] . 'teste');        
+        $sha1Password = sha1($filteredInputs['password'] . $_ENV['SALT']);
+
         $user = new User(
-            $filteredInputs['email'], 
-            $filteredInputs['password'],
+            $filteredInputs['email'],
+            $sha1Password,
             $filteredInputs['name'], 
             $filteredInputs['country'], 
             $filteredInputs['phone_number']
@@ -54,8 +52,6 @@ class UserCreateController extends ControllerComHtml implements InterfaceControl
             echo $e->getMessage();
             $this->pdo->rollBack();
         }
-
-        exit();
 
         header('Location: /', true, 302);
     }

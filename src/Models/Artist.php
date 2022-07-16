@@ -9,7 +9,7 @@ class Artist
     private $description;
     private $admin_id_admin;
 
-    public function __construct(?string $user_email, string $name, string $description, string $admin_id_admin)
+    public function __construct($user_email, $name, $description, $admin_id_admin)
     {
         $this->user_email = $user_email;
         $this->name = $name;

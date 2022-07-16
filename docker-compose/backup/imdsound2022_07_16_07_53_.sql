@@ -26,7 +26,7 @@ CREATE TABLE `admin` (
   `id_admin` int(11) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id_admin`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `album` (
   `data_cadastro` date NOT NULL,
   PRIMARY KEY (`list_id_list`),
   CONSTRAINT `fk_Album_List1` FOREIGN KEY (`list_id_list`) REFERENCES `list` (`id_list`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +77,7 @@ CREATE TABLE `album_has_music` (
   KEY `fk_Album_has_music_Album1_idx` (`album_list_id_list`),
   CONSTRAINT `fk_Album_has_music_Album1` FOREIGN KEY (`album_list_id_list`) REFERENCES `album` (`list_id_list`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Album_has_music_music1` FOREIGN KEY (`music_id_music`) REFERENCES `music` (`idmusic`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `artist` (
   KEY `fk_Artist_User1_idx` (`user_email`),
   CONSTRAINT `fk_Artist_Admin1` FOREIGN KEY (`admin_id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Artist_User1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +133,7 @@ CREATE TABLE `artist_cadastra_album` (
   KEY `fk_Artist_has_Album_Artist1_idx` (`artist_user_email`),
   CONSTRAINT `fk_Artist_has_Album_Album1` FOREIGN KEY (`album_list_id_list`) REFERENCES `album` (`list_id_list`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Artist_has_Album_Artist1` FOREIGN KEY (`artist_user_email`) REFERENCES `artist` (`user_email`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +160,7 @@ CREATE TABLE `artist_cadastra_music` (
   KEY `fk_Artist_has_music_Artist1_idx` (`artist_user_email`),
   CONSTRAINT `fk_Artist_has_music_Artist1` FOREIGN KEY (`artist_user_email`) REFERENCES `artist` (`user_email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Artist_has_music_music1` FOREIGN KEY (`music_id_music`) REFERENCES `music` (`idmusic`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +184,7 @@ CREATE TABLE `feature` (
   `description` varchar(45) NOT NULL,
   PRIMARY KEY (`feat_name`),
   UNIQUE KEY `descrition_UNIQUE` (`feat_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,9 +208,9 @@ CREATE TABLE `list` (
   `name` varchar(45) NOT NULL,
   `num_likes` int(11) NOT NULL,
   `duration_time` int(11) NOT NULL DEFAULT '0',
-  `picture` mediumtext,
+  `picture` text,
   PRIMARY KEY (`id_list`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,7 +237,7 @@ CREATE TABLE `list_has_genre` (
   KEY `fk_List_has_genre_List1_idx` (`list_id_list`),
   CONSTRAINT `fk_List_has_genre_List1` FOREIGN KEY (`list_id_list`) REFERENCES `list` (`id_list`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_List_has_genre_genre1` FOREIGN KEY (`genre_name`) REFERENCES `music_genre` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,7 +264,7 @@ CREATE TABLE `music` (
   `lyrics` varchar(45) DEFAULT NULL,
   `data_create` date NOT NULL,
   PRIMARY KEY (`idmusic`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -286,7 +286,7 @@ DROP TABLE IF EXISTS `music_genre`;
 CREATE TABLE `music_genre` (
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -313,7 +313,7 @@ CREATE TABLE `music_has_genre` (
   KEY `fk_music_has_genre_music1_idx` (`music_idmusic`),
   CONSTRAINT `fk_music_has_genre_genre1` FOREIGN KEY (`genre_name`) REFERENCES `music_genre` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_music_has_genre_music1` FOREIGN KEY (`music_idmusic`) REFERENCES `music` (`idmusic`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -338,7 +338,7 @@ CREATE TABLE `playlist` (
   PRIMARY KEY (`list_id_list`),
   KEY `fk_Playlist_List1_idx` (`list_id_list`),
   CONSTRAINT `fk_Playlist_List1` FOREIGN KEY (`list_id_list`) REFERENCES `list` (`id_list`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -365,7 +365,7 @@ CREATE TABLE `playlist_has_music` (
   KEY `fk_Playlist_has_music_Playlist1_idx` (`playlist_list_id_list`),
   CONSTRAINT `fk_Playlist_has_music_Playlist1` FOREIGN KEY (`playlist_list_id_list`) REFERENCES `playlist` (`list_id_list`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Playlist_has_music_music1` FOREIGN KEY (`music_id_music`) REFERENCES `music` (`idmusic`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +395,7 @@ CREATE TABLE `subscription` (
   KEY `fk_subscription_User1_idx` (`user_email`),
   CONSTRAINT `fk_subscription_User1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_subscription_type1` FOREIGN KEY (`type_type_name`) REFERENCES `type` (`type_name`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -419,7 +419,7 @@ CREATE TABLE `type` (
   `description` varchar(45) NOT NULL,
   `value` decimal(2,0) NOT NULL,
   PRIMARY KEY (`type_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -446,7 +446,7 @@ CREATE TABLE `type_has_feature` (
   KEY `fk_type_has_feature_type1_idx` (`type_type_name`),
   CONSTRAINT `fk_type_has_feature_feature1` FOREIGN KEY (`feature_feat_name`) REFERENCES `feature` (`feat_name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_type_has_feature_type1` FOREIGN KEY (`type_type_name`) REFERENCES `type` (`type_name`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -472,7 +472,7 @@ CREATE TABLE `user` (
   `country` varchar(45) DEFAULT NULL,
   `phone_number` varchar(14) DEFAULT NULL,
   PRIMARY KEY (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -500,7 +500,7 @@ CREATE TABLE `user_has_playlist` (
   KEY `fk_User_has_Playlist_User1_idx` (`user_email`),
   CONSTRAINT `fk_User_has_Playlist_Playlist1` FOREIGN KEY (`playlist_list_id_list`) REFERENCES `playlist` (`list_id_list`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_User_has_Playlist_User1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -528,7 +528,7 @@ CREATE TABLE `user_listen_music` (
   KEY `fk_User_has_music_User1_idx` (`user_email`),
   CONSTRAINT `fk_User_has_music_User1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_User_has_music_music1` FOREIGN KEY (`music_id_music`) REFERENCES `music` (`idmusic`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -549,4 +549,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-16 11:47:07
+-- Dump completed on 2022-07-16 10:51:29

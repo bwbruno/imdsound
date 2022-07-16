@@ -29,13 +29,7 @@ class PdoUserRepository implements UserRepository
         $userList = [];
 
         foreach ($userDataList as $userData) {
-            $userList[] = new User(
-                $userData['email'],
-                $userData['password'],
-                $userData['name'],
-                $userData['country'],
-                $userData['phone_number']
-            );
+            $userList[] = $this->hydrateUser($userData);
         }
 
         return $userList;
@@ -51,12 +45,12 @@ class PdoUserRepository implements UserRepository
     private function insert(User $user): bool
     {
 
-        $insertQuery = 'INSERT INTO user (email, password, name, country, phone_number) VALUES (:email, :password, :name, :country, :phone_number);';
+        $insertQuery =
+            'INSERT INTO user (email, password, name, country, phone_number) ' .
+            'VALUES (:email, :password, :name, :country, :phone_number);';
 
         $stmt = $this->connection->prepare($insertQuery);
         
-
-
         $success = $stmt->execute([
             ':email' => $user->email(),
             ':password' => $user->password(),
@@ -64,10 +58,6 @@ class PdoUserRepository implements UserRepository
             ':country' => $user->country(),
             ':phone_number' => $user->phone_number(),
         ]);
-
-        if ($success) {
-           $user->defineEmail($this->connection->lastInsertId());
-        }
 
         return $success;
     }
@@ -90,4 +80,24 @@ class PdoUserRepository implements UserRepository
         return $stmt->execute();
     }
 
+    public function findByEmail(string $email): User
+    {
+        $sqlQuery = 'SELECT * FROM user WHERE email = ?;';
+        $stmt = $this->connection->query($sqlQuery);
+        $stmt->bindValue(1, $email);
+        $userData = $stmt->fetch();
+
+        return $this->hydrateUser($userData);;
+    }
+
+    public function hydrateUser($userData) : User
+    {
+        return new User(
+            $userData['email'],
+            $userData['password'],
+            $userData['name'],
+            $userData['country'],
+            $userData['phone_number']
+        );
+    }
 }

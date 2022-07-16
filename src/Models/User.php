@@ -10,14 +10,17 @@ class User
     private $name;
     private $country;
     private $phone_number;
+    private Artist $artist;
+    private Playlist $playlists;
 
-    public function __construct(string $email, string $password, string $name, string $country, string $phone_number)
+
+    public function __construct($email, $password, $name, $country, $phone_number)
     {
-        $this->$email = $email;
-        $this->$password = $password;
-        $this->$name = $name;
-        $this->$country = $country;
-        $this->$phone_number = $phone_number;
+        $this->email = $email;
+        $this->password = $password;
+        $this->name = $name;
+        $this->country = $country;
+        $this->phone_number = $phone_number;
     }
 
     public function defineEmail(string $email): void
