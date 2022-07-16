@@ -11,25 +11,19 @@ class Music
     private $lyrics;
     private $data_create;
 
-    public function __construct(int $idmusic,
-                                string $name, 
-                                int $duration_time,
-                                int $num_likes,
-                                string $lyrics;
-                                date $date_create;)
+    public function __construct($idmusic, $name, $duration_time, $num_likes, $lyrics, $data_create)
     {
         $this->idmusic = $idmusic;
         $this->name = $name;
         $this->duration_time = $duration_time;
         $this->num_likes = $num_likes;
-        $this->lyrics; = $lyrics;
-        $this->date_create = $date_create;
+        $this->lyrics = $lyrics;
+        $this->data_create = $data_create;
     }
-
 
     public function idmusic(): int
     {
-        return $this->id;
+        return $this->idmusic;
     }
 
     public function name(): string
@@ -54,6 +48,6 @@ class Music
 
     public function date_create(): int
     {
-        return $this->date_create;
+        return $this->data_create;
     }
 }

@@ -1,44 +1,13 @@
 <?php include __DIR__ . '/../layouts/inicio-html.php'; ?>
-
 <?php include __DIR__ . '/../layouts/inicio-body.php'; ?>
-
 	<?php include __DIR__ . '/../components/left-side.php'; ?>
-
     <?php include __DIR__ . '/../modals/app.php'; ?>
-
 	<?php include __DIR__ . '/../modals/signup.php'; ?>
 
 		<div class="main-content">
 			<?php include __DIR__ . '/../components/header-section.php'; ?>
 
-	
-
-			<div id="page-wrapper">
-
-			<h3 class="tittle">
-                <?= $title ?>
-                <a href="/novo-usuario" class="btn btn-primary mb-2">
-                    <span class="new">Novo usuário</span>
-                </a>
-            </h3>
-
-            <ul class="list-group">
-                <?php foreach ($usuarios as $usuario): ?>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <?= $usuario->name(); ?>
-
-                        <span>
-                            <a href="/alterar-usuario?id=<?= $usuario->email(); ?>" class="btn btn-info btn-sm">
-                                Alterar
-                            </a>
-                            <a href="/excluir-usuario?id=<?= $usuario->email(); ?>" class="btn btn-danger btn-sm">
-                                Excluir
-                            </a>
-                        </span>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-
+            <div id="page-wrapper">
 				<div class="jumbotron row">
 					<div class="col-sm-3">
 						<img data-src="holder.js/200x200" class="img-thumbnail" 
@@ -152,5 +121,4 @@
 			</div>
 		</div>
 	<?php include __DIR__ . '/../components/footer-section.php'; ?>
-
 <?php include __DIR__ . '/../layouts/fim-html.php'; ?>
