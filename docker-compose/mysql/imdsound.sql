@@ -238,7 +238,7 @@ CREATE TABLE `list_has_genre` (
   KEY `fk_List_has_genre_genre1_idx` (`genre_name`),
   KEY `fk_List_has_genre_List1_idx` (`list_id_list`),
   CONSTRAINT `fk_List_has_genre_List1` FOREIGN KEY (`list_id_list`) REFERENCES `list` (`id_list`) ON DELETE CASCADE ON UPDATE RESTRICT,
-  CONSTRAINT `fk_List_has_genre_genre1` FOREIGN KEY (`genre_name`) REFERENCES `music_genre` (`name`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk_List_has_genre_genre1` FOREIGN KEY (`genre_name`) REFERENCES `music_genre` (`name`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -297,6 +297,11 @@ CREATE TABLE `music_genre` (
 
 LOCK TABLES `music_genre` WRITE;
 /*!40000 ALTER TABLE `music_genre` DISABLE KEYS */;
+INSERT INTO `music_genre` VALUES ('pass1');
+INSERT INTO `music_genre` VALUES ('pass2');
+INSERT INTO `music_genre` VALUES ('pass3');
+INSERT INTO `music_genre` VALUES ('pass4');
+INSERT INTO `music_genre` VALUES ('pass5');
 /*!40000 ALTER TABLE `music_genre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +318,7 @@ CREATE TABLE `music_has_genre` (
   PRIMARY KEY (`music_idmusic`,`genre_name`),
   KEY `fk_music_has_genre_genre1_idx` (`genre_name`),
   KEY `fk_music_has_genre_music1_idx` (`music_idmusic`),
-  CONSTRAINT `fk_music_has_genre_genre1` FOREIGN KEY (`genre_name`) REFERENCES `music_genre` (`name`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_music_has_genre_genre1` FOREIGN KEY (`genre_name`) REFERENCES `music_genre` (`name`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_music_has_genre_music1` FOREIGN KEY (`music_idmusic`) REFERENCES `music` (`idmusic`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
