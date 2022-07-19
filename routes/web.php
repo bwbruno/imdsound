@@ -12,6 +12,7 @@ use IMDSound\Controllers\MusicGenre\MusicGenreCreateController;
 use IMDSound\Controllers\User\UserCreateController;
 use IMDSound\Controllers\User\UserListController;
 use IMDSound\Controllers\MusicGenre\MusicGenreListController;
+use IMDSound\Controllers\TypeSubs\TypeSubsController;
 
 return [
     '/' => HomeController::class,
@@ -23,6 +24,5 @@ return [
     '/artist/promotion' => ArtistPromotionController::class,
     '/music_genre/list' => MusicGenreListController::class,
     '/music_genre/create' => MusicGenreCreateController::class,
-
-
+    '/typeSubs' => TypeSubsController::class,
 ];

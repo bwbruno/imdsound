@@ -20,6 +20,13 @@ Para parar e remover os containeres, execute:
 docker-compose down
 ```
 
+
+````
+Para erros no build
+
+rm  ~/.docker/config.json
+````
+
 Baseado em:
 
 - [How to Create PHP Development Environments with Docker Compose](https://www.youtube.com/watch?v=l0jb-N5H52A)
