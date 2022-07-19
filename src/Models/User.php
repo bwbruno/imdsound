@@ -4,31 +4,66 @@ namespace IMDSound\Models;
 
 class User
 {
-    private $id;
-    private $name;
 
-    public function __construct(?int $id, string $name)
+    private $email;
+    private $password;
+    private $name;
+    private $country;
+    private $phone_number;
+    private ?Artist $artist;
+    private ?Playlist $playlists;
+
+    public function __construct($email, $password, $name, $country, $phone_number)
     {
-        $this->id = $id;
+        $this->email = $email;
+        $this->password = $password;
         $this->name = $name;
+        $this->country = $country;
+        $this->phone_number = $phone_number;
     }
 
-    public function defineId(int $id): void
+    public function defineEmail(string $email): void
     {
-        if (!is_null($this->id)) {
-            throw new \DomainException('Você só pode definir o ID uma vez');
+        if (!is_null($this->email)) {
+            throw new \DomainException('Voce so pode definir o email uma vez');
         }
 
-        $this->id = $id;
+        $this->email = $email;
     }
 
-    public function id(): ?int
+    public function email()
     {
-        return $this->id;
+        return $this->email;
     }
 
-    public function name(): string
+    public function name()
     {
         return $this->name;
     }
+
+    public function password()
+    {
+        return $this->password;
+    }
+
+    public function country()
+    {
+        return $this->country;
+    }
+
+    public function phone_number()
+    {
+        return $this->phone_number;
+    }
+
+    public function setArtist(Artist $a)
+    {
+        return $this->artist = $a;
+    }
+
+    public function isArtist()
+    {
+        return isset($this->artist);
+    }
+
 }

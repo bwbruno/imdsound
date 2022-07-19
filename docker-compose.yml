@@ -14,7 +14,8 @@ services:
     volumes:
       - ./:/var/www
     networks:
-      - imdsound
+      imdsound:
+        ipv4_address: 10.5.0.4
 
   db:
     image: mysql:5.7
@@ -32,7 +33,8 @@ services:
     volumes:
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
-      - imdsound
+      imdsound:
+        ipv4_address: 10.5.0.5
 
   nginx:
     image: nginx:alpine
@@ -44,8 +46,12 @@ services:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d
     networks:
-      - imdsound
+      imdsound:
+        ipv4_address: 10.5.0.6
 
 networks:
   imdsound:
     driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
