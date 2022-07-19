@@ -16,8 +16,8 @@
                 </div>
             </div>
             <!-- search-scripts -->
-            <script src="js/classie.js"></script>
-            <script src="js/uisearch.js"></script>
+            <script src="/js/classie.js"></script>
+            <script src="/js/uisearch.js"></script>
             <script>
                 new UISearch( document.getElementById( 'sb-search' ) );
             </script>
@@ -26,10 +26,10 @@
             <div class="col-md-4 player">
                 <div class="audio-player">
                     <audio id="audio-player"  controls="controls">
-                        <source src="media/Blue Browne.ogg" type="audio/ogg"></source>
-                        <source src="media/Blue Browne.mp3" type="audio/mpeg"></source>
-                        <source src="media/Georgia.ogg" type="audio/ogg"></source>
-                        <source src="media/Georgia.mp3" type="audio/mpeg"></source></audio>
+                        <source src="/media/Blue Browne.ogg" type="audio/ogg"></source>
+                        <source src="/media/Blue Browne.mp3" type="audio/mpeg"></source>
+                        <source src="/media/Georgia.ogg" type="audio/ogg"></source>
+                        <source src="/media/Georgia.mp3" type="audio/mpeg"></source></audio>
                 </div>
                 <!---->
                 <script type="text/javascript">
@@ -45,8 +45,8 @@
                     });
                 </script>
                 <!--audio-->
-                <link rel="stylesheet" type="text/css" media="all" href="css/audio.css">
-                <script type="text/javascript" src="js/mediaelement-and-player.min.js"></script>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/audio.css">
+                <script type="text/javascript" src="/js/mediaelement-and-player.min.js"></script>
                 <!---->
 
 
