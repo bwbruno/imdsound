@@ -8,10 +8,12 @@ use IMDSound\Controllers\Artist\ArtistListController;
 use IMDSound\Controllers\Artist\ArtistPromotionController;
 use IMDSound\Controllers\Features\ListFeaturesController;
 use IMDSound\Controllers\Home\HomeController;
-use IMDSound\Controllers\MusicGenre\MusicGenreCreateController;
 use IMDSound\Controllers\User\UserCreateController;
 use IMDSound\Controllers\User\UserListController;
 use IMDSound\Controllers\MusicGenre\MusicGenreListController;
+use IMDSound\Controllers\MusicGenre\MusicGenreCreateController;
+use IMDSound\Controllers\MusicGenre\MusicGenreDeleteController;
+use IMDSound\Controllers\MusicGenre\MusicGenreUpdateController;
 use IMDSound\Controllers\TypeSubs\TypeSubsController;
 
 return [
@@ -24,5 +26,7 @@ return [
     '/artist/promotion' => ArtistPromotionController::class,
     '/music_genre/list' => MusicGenreListController::class,
     '/music_genre/create' => MusicGenreCreateController::class,
+    '/music_genre/remove' => MusicGenreDeleteController::class,
+    '/music_genre/update' => MusicGenreUpdateController::class,
     '/typeSubs' => TypeSubsController::class,
 ];

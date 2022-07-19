@@ -7,6 +7,8 @@
 		<div class="main-content">
 			<?php include __DIR__ . '/../components/header-section.php'; ?>
             <?php include __DIR__ . '/modals/form-music-genre-create.php'; ?>
+            <?php include __DIR__ . '/modals/form-music-genre-delete.php'; ?>
+            <?php include __DIR__ . '/modals/form-music-genre-update.php'; ?>
 
 			<div id="page-wrapper">
 				<div class="inner-content">
@@ -36,12 +38,14 @@
                                         <td><?= $music_genre->name(); ?></td>
                                         <td>
                                             <span>
-                                                <a data-toggle="modal" data-target="#form_add_genre"
+                                                <a data-toggle="modal" data-target="#form_update_genre"
                                                    data-genero="<?= $music_genre->name(); ?>"
-                                                   class="input_genre btn btn-info btn-sm">
+                                                   class="update_genre btn btn-info btn-sm">
                                                     Alterar
                                                 </a>
-                                                <a href="/music_genre?id=<?= $music_genre->name(); ?>" class="btn btn-danger btn-sm">
+                                                <a data-toggle="modal" data-target="#form_remove_genre"
+                                                   data-genero="<?= $music_genre->name(); ?>"
+                                                   class="remove_genre btn btn-danger btn-sm">
                                                     Excluir
                                                 </a>
                                             </span>    
@@ -62,6 +66,21 @@
             let id = $(this).data('genero');
             $("input[name=genero]").val(id);
         });
+
+        
+        $(document).on("click", ".remove_genre", function () {
+            let id = $(this).data('genero');
+            $("input[name=genero]").val(id);
+            $("#modalDelete").text("Deseja deletar " + id);
+        });
+
+        $(document).on("click", ".update_genre", function () {
+            let id = $(this).data('genero');
+            $("input[name=oldGenero]").val(id);
+            $("input[name=newGenero]").val(id);
+            $("#modalUpdate").text("Deseja atualizar " + id);
+        });
+
 
     </script>
 

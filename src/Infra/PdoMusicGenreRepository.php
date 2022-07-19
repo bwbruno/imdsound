@@ -34,15 +34,6 @@ class PdoMusicGenreRepository
         return $music_genreList;
     }
 
-    public function save(MusicGenre $music_genre): bool
-    {
-        if($this->findByName($music_genre->name()))
-        {
-            return $this->insert($music_genre);
-        }
-
-        return $this->update($music_genre);
-    }
 
     public function insert(MusicGenre $music_genre): bool
     {
@@ -59,10 +50,25 @@ class PdoMusicGenreRepository
         return $success;
     }
 
+    public function update(MusicGenre $oldMusic_genre, MusicGenre $newMusic_genre): bool
+    {
+        $insertQuery =
+            'UPDATE music_genre SET name=:newName WHERE name=:oldName';
+
+        $stmt = $this->connection->prepare($insertQuery);
+        
+        $success = $stmt->execute([
+            ':newName' => $newMusic_genre->name(),
+            ':oldName' => $oldMusic_genre->name(),
+        ]);
+
+        return $success;
+    }
+
     public function remove(MusicGenre $music_genre): bool
     {
         $stmt = $this->connection->prepare('DELETE FROM music_genre WHERE name = ?;');
-        $stmt->bindValue(1, $music_genre->name(), PDO::PARAM_INT);
+        $stmt->bindValue(1, $music_genre->name(), PDO::PARAM_STR);
 
         return $stmt->execute();
     }

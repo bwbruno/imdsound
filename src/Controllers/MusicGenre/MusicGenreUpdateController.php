@@ -8,7 +8,7 @@ use IMDSound\Infra\ConnectionCreator;
 use IMDSound\Infra\PdoMusicGenreRepository;
 use IMDSound\Models\MusicGenre;
 
-class MusicGenreCreateController extends ControllerComHtml implements InterfaceControladorRequisicao
+class MusicGenreUpdateController extends ControllerComHtml implements InterfaceControladorRequisicao
 {
 
     private $repository;
@@ -25,18 +25,23 @@ class MusicGenreCreateController extends ControllerComHtml implements InterfaceC
     {
 
         $inputs = [
-            'genero' => FILTER_SANITIZE_STRING,
+            'oldGenero' => FILTER_SANITIZE_STRING,
+            'newGenero' => FILTER_SANITIZE_STRING,
         ];
 
         $filteredInputs = filter_input_array(INPUT_POST, $inputs);
 
-        $musicGenre = new MusicGenre(
-            $filteredInputs['genero']
+        $newMusicGenre = new MusicGenre(
+            $filteredInputs['newGenero']
+        );
+
+        $oldMusicGenre = new MusicGenre(
+            $filteredInputs['oldGenero']
         );
 
         $this->pdo->beginTransaction();
         try {
-            $this->repository->insert($musicGenre);
+            $this->repository->update($oldMusicGenre, $newMusicGenre);
             $this->pdo->commit();
         } catch(\PDOException $e) {
             echo $e->getMessage();

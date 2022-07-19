@@ -8,7 +8,7 @@ use IMDSound\Infra\ConnectionCreator;
 use IMDSound\Infra\PdoMusicGenreRepository;
 use IMDSound\Models\MusicGenre;
 
-class MusicGenreCreateController extends ControllerComHtml implements InterfaceControladorRequisicao
+class MusicGenreDeleteController extends ControllerComHtml implements InterfaceControladorRequisicao
 {
 
     private $repository;
@@ -36,7 +36,7 @@ class MusicGenreCreateController extends ControllerComHtml implements InterfaceC
 
         $this->pdo->beginTransaction();
         try {
-            $this->repository->insert($musicGenre);
+            $this->repository->remove($musicGenre);
             $this->pdo->commit();
         } catch(\PDOException $e) {
             echo $e->getMessage();
