@@ -2,12 +2,15 @@
 
 namespace IMDSound\Models;
 
+use IMDSound\Models\Album;
+
 class Artist implements \JsonSerializable
 {
     private $user_email;
     private $name = 'sem nome';
     private $description = 'sem descricao';
     private $admin_id_admin;
+    private array $albums;
 
     public function __construct($user_email, $admin_id_admin)
     {
@@ -44,6 +47,16 @@ class Artist implements \JsonSerializable
         return $this->admin_id_admin;
     }
 
+    /**
+     * @return Album|null
+     */
+    public function getAlbums(): ?Album
+    {
+        return $this->albums;
+    }
+
+
+
     public function jsonSerialize()
     {
         return [
@@ -52,5 +65,13 @@ class Artist implements \JsonSerializable
             'description' => $this->description,
             'admin_id_admin' => $this->admin_id_admin,
         ];
+    }
+
+    /**
+     * @param \IMDSound\Models\Album $album
+     */
+    public function addAlbum(Album $album): void
+    {
+        $this->albums[] = $album;
     }
 }

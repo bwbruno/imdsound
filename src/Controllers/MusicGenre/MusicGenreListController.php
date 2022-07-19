@@ -23,7 +23,7 @@ class MusicGenreListController extends ControllerComHtml implements InterfaceCon
     {
         echo $this->renderizaHtml('music-genre/list-music-genre.php', [
             'music_genres' => $this->repository->allMusicGenre(),
-            'title' => 'Gêneros de Música'
+            'title' => 'Gêneros Musicais'
         ]);
     }
 }

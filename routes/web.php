@@ -4,6 +4,7 @@
     Todas as rotas
 */
 
+use IMDSound\Controllers\Albums\AlbumListController;
 use IMDSound\Controllers\Artist\ArtistListController;
 use IMDSound\Controllers\Artist\ArtistPromotionController;
 use IMDSound\Controllers\Features\ListFeaturesController;
@@ -25,4 +26,5 @@ return [
     '/music_genre/list' => MusicGenreListController::class,
     '/music_genre/create' => MusicGenreCreateController::class,
     '/typeSubs' => TypeSubsController::class,
+    '/albums' => AlbumListController::class,
 ];

@@ -91,4 +91,5 @@ class PdoArtistRepository
 
         return $list;
     }
+
 }
