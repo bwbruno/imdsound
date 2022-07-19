@@ -37,7 +37,8 @@
                                     <td><?= $usuario->name(); ?></td>
                                     <td><?= $usuario->password(); ?></td>
                                     <td>
-                                    <select id="artista" name="artista">
+                                    <select id="artista" name="artista"
+                                        class="<?= $usuario->isArtist() ? 'btn-info' : 'btn-danger' ?>">
                                         <option value="nao">Não</option>
                                         <option
                                                 value="<?= $usuario->email(); ?>"

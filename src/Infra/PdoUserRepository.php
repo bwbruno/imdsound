@@ -43,7 +43,7 @@ class PdoUserRepository implements UserRepository
         //return $this->update($user);
     }
 
-    private function insert(User $user): bool
+    public function insert(User $user): bool
     {
 
         $insertQuery =

@@ -2,11 +2,10 @@
 
 namespace IMDSound\Infra;
 
-use IMDSound\Models\Music_genre;
-use IMDSound\Repository\Music_genreRepository;
+use IMDSound\Models\MusicGenre;
 use PDO;
 
-class PdoMusicGenreRepository implements Music_genreRepository
+class PdoMusicGenreRepository
 {
     private $connection;
 
@@ -15,34 +14,34 @@ class PdoMusicGenreRepository implements Music_genreRepository
         $this->connection = $connection;
     }
 
-    public function allMusic_genre(): array
+    public function allMusicGenre(): array
     {
         $sqlQuery = 'SELECT * FROM music_genre;';
         $stmt = $this->connection->query($sqlQuery);
 
-        return $this->hydrateMusic_genreList($stmt);
+        return $this->hydrateMusicGenreList($stmt);
     }
 
-    private function hydrateMusic_genreList(\PDOStatement $stmt): array
+    private function hydrateMusicGenreList(\PDOStatement $stmt): array
     {
         $music_genreDataList = $stmt->fetchAll();
         $music_genreList = [];
 
         foreach ($music_genreDataList as $music_genreData) {
-            $music_genreList[] = $this->hydrateMusic_genre($music_genreData);
+            $music_genreList[] = $this->hydrateMusicGenre($music_genreData);
         }
 
         return $music_genreList;
     }
 
-    public function save(Music_genre $music_genre): bool
+    public function save(MusicGenre $music_genre): bool
     {
            
         return $this->insert($music_genre);
         //return $this->update($user);
     }
 
-    private function insert(Music_genre $music_genre): bool
+    public function insert(MusicGenre $music_genre): bool
     {
 
         $insertQuery =
@@ -58,7 +57,7 @@ class PdoMusicGenreRepository implements Music_genreRepository
         return $success;
     }
 
-    public function remove(Music_genre $music_genre): bool
+    public function remove(MusicGenre $music_genre): bool
     {
         $stmt = $this->connection->prepare('DELETE FROM music_genre WHERE name = ?;');
         $stmt->bindValue(1, $music_genre->name(), PDO::PARAM_INT);
@@ -66,16 +65,16 @@ class PdoMusicGenreRepository implements Music_genreRepository
         return $stmt->execute();
     }
 
-    public function hydrateMusic_genre($music_genreData) : Music_genre
+    public function hydrateMusicGenre($music_genreData) : MusicGenre
     {
-        return new Music_genre(
+        return new MusicGenre(
             $music_genreData['name']
         );
     }
 
-    public function findByName(string $name): Music_genre{
+    public function findByName(string $name): MusicGenre{
         //TODO IMPLEMENT
-        return new Music_genre(
+        return new MusicGenre(
             'nome'
         );
     }

@@ -1,30 +1,29 @@
 <?php
 
-namespace IMDSound\Controllers\Music_genre;
+namespace IMDSound\Controllers\MusicGenre;
 
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
 use IMDSound\Infra\ConnectionCreator;
 use IMDSound\Infra\PdoMusicGenreRepository;
-use IMDSound\Models\Music_genre;
 
-class ListMusicGenreController extends ControllerComHtml implements InterfaceControladorRequisicao
+class MusicGenreListController extends ControllerComHtml implements InterfaceControladorRequisicao
 {
 
-    private $music_genreRepository;
+    private $repository;
     private $pdo;
 
     public function __construct()
     {
         $this->pdo = ConnectionCreator::createConnection();
-        $this->music_genreRepository = new PdoMusicGenreRepository($this->pdo);
+        $this->repository = new PdoMusicGenreRepository($this->pdo);
     }
 
    
     public function processaRequisicao(): void
     {
-        echo $this->renderizaHtml('music_genre/music_genre.php', [
-            'music_genres' => $this->music_genreRepository->allMusic_genre(),
+        echo $this->renderizaHtml('music-genre/list-music-genre.php', [
+            'music_genres' => $this->repository->allMusicGenre(),
             'title' => 'Genero de Musica'
         ]);
     }

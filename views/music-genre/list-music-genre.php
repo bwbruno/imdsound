@@ -6,13 +6,17 @@
 
 		<div class="main-content">
 			<?php include __DIR__ . '/../components/header-section.php'; ?>
+            <?php include __DIR__ . '/modals/form-music-genre-create.php'; ?>
 
 			<div id="page-wrapper">
 				<div class="inner-content">
                     <div class="tittle-head two">
                         <h3 class="tittle">
                             <?= $title ?>
-                            <a class="new btn btn-primary btn-sm" href="#" role="button">Adicionar</a>
+                            <a class="new btn btn-primary btn-sm" role="button"
+                               data-toggle="modal" data-target="#form_add_genre">
+                                Adicionar
+                            </a>
                         </h3>
                         <div class="clearfix"> </div>
                     </div>

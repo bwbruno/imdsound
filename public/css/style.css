@@ -2166,6 +2166,18 @@ li.list-group-item1 {
     color: #777;
 }
 /*-- sign --*/
+.close {
+    line-height: 2;
+}
+
+.modal-body {
+    padding: 10px 32px
+}
+
+.modal-footer {
+    padding: 15px 32px;
+}
+
 .modal-info {
     width: 100%;
 }

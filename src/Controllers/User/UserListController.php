@@ -23,7 +23,7 @@ class UserListController extends ControllerComHtml implements InterfaceControlad
    
     public function processaRequisicao(): void
     {
-        echo $this->renderizaHtml('users/listar-usuarios.php', [
+        echo $this->renderizaHtml('users/list-users.php', [
             'usuarios' => $this->userRepository->usersWithArtist(),
             'title' => 'Usuários'
         ]);
