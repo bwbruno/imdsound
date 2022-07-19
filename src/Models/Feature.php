@@ -18,7 +18,7 @@ class Feature
         return $this->feat_name;
     }
 
-    public function descriptiom(): string
+    public function description(): string
     {
         return $this->description;
     }
