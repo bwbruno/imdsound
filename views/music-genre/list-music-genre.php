@@ -13,8 +13,9 @@
                     <div class="tittle-head two">
                         <h3 class="tittle">
                             <?= $title ?>
-                            <a class="new btn btn-primary btn-sm" role="button"
-                               data-toggle="modal" data-target="#form_add_genre">
+                            <a class="input_genre new btn btn-primary btn-sm" role="button"
+                               data-toggle="modal" data-target="#form_add_genre"
+                               data-genero="Gênero">
                                 Adicionar
                             </a>
                         </h3>
@@ -35,7 +36,9 @@
                                         <td><?= $music_genre->name(); ?></td>
                                         <td>
                                             <span>
-                                                <a href="/music_genre?id=<?= $music_genre->name(); ?>" class="btn btn-info btn-sm">
+                                                <a data-toggle="modal" data-target="#form_add_genre"
+                                                   data-genero="<?= $music_genre->name(); ?>"
+                                                   class="input_genre btn btn-info btn-sm">
                                                     Alterar
                                                 </a>
                                                 <a href="/music_genre?id=<?= $music_genre->name(); ?>" class="btn btn-danger btn-sm">
@@ -52,4 +55,14 @@
 			</div>
 		</div>
 <?php include __DIR__ . '/../components/footer-section.php'; ?>
+
+    <script>
+
+        $(document).on("click", ".input_genre", function () {
+            let id = $(this).data('genero');
+            $("input[name=genero]").val(id);
+        });
+
+    </script>
+
 <?php include __DIR__ . '/../layouts/fim-html.php'; ?>

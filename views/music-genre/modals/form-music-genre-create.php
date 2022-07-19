@@ -13,7 +13,8 @@
                 <div class="form-group">
                         <input name="genero" type="text" value="Gênero"
                                class="form-control"
-                               onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Gênero';}"
+                               onfocus="if (this.value == 'Gênero') {this.value = '';}"
+                               onblur="if (this.value == '') {this.value = 'Gênero';}"
                                required>
                 </div>
             </div>

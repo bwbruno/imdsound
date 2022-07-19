@@ -36,7 +36,7 @@ class MusicGenreCreateController extends ControllerComHtml implements InterfaceC
 
         $this->pdo->beginTransaction();
         try {
-            $this->repository->insert($musicGenre);
+            $this->repository->save($musicGenre);
             $this->pdo->commit();
         } catch(\PDOException $e) {
             echo $e->getMessage();

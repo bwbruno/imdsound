@@ -36,14 +36,16 @@ class PdoMusicGenreRepository
 
     public function save(MusicGenre $music_genre): bool
     {
-           
-        return $this->insert($music_genre);
-        //return $this->update($user);
+        if($this->findByName($music_genre->name()))
+        {
+            return $this->insert($music_genre);
+        }
+
+        return $this->update($music_genre);
     }
 
     public function insert(MusicGenre $music_genre): bool
     {
-
         $insertQuery =
             'INSERT INTO music_genre (name) ' .
             'VALUES (:name);';
@@ -72,10 +74,20 @@ class PdoMusicGenreRepository
         );
     }
 
-    public function findByName(string $name): MusicGenre{
-        //TODO IMPLEMENT
-        return new MusicGenre(
-            'nome'
-        );
+    public function findByName(string $name): ?MusicGenre
+    {
+
+        $stmt = $this->connection->prepare('SELECT * FROM music_genre WHERE name = ?');
+        $stmt->bindParam(1, $name);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($row) {
+            return new MusicGenre(
+                $row['name']
+            );
+        }
+
+        return null;
     }
 }

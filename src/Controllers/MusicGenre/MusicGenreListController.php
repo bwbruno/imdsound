@@ -18,13 +18,12 @@ class MusicGenreListController extends ControllerComHtml implements InterfaceCon
         $this->pdo = ConnectionCreator::createConnection();
         $this->repository = new PdoMusicGenreRepository($this->pdo);
     }
-
    
     public function processaRequisicao(): void
     {
         echo $this->renderizaHtml('music-genre/list-music-genre.php', [
             'music_genres' => $this->repository->allMusicGenre(),
-            'title' => 'Genero de Musica'
+            'title' => 'Gêneros de Música'
         ]);
     }
 }
