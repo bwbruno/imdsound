@@ -2,13 +2,13 @@
 
 namespace IMDSound\Models;
 
-class Music_genre
+class MusicGenre
 {
     private $name;
     
-    public function __construct($name)
+    public function __construct($n)
     {
-        $this->name = $name;
+        $this->name = $n;
     }
 
     public function name()
