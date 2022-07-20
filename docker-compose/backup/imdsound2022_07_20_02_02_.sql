@@ -60,7 +60,7 @@ CREATE TABLE `album` (
 
 LOCK TABLES `album` WRITE;
 /*!40000 ALTER TABLE `album` DISABLE KEYS */;
-INSERT INTO `album` VALUES (1,'2022-07-19 15:22:29'),(10,'2022-07-19 23:36:29'),(25,'2022-07-19 23:37:16'),(26,'2022-07-19 23:39:27'),(28,'2022-07-19 23:42:24'),(29,'2022-07-19 23:44:06'),(30,'2022-07-19 23:45:12'),(31,'2022-07-19 23:47:05'),(32,'2022-07-19 23:50:27'),(33,'2022-07-20 16:40:20'),(34,'2022-07-20 16:40:32'),(35,'2022-07-20 16:45:37'),(36,'2022-07-20 16:45:54');
+INSERT INTO `album` VALUES (1,'2022-07-19 15:22:29'),(10,'2022-07-19 23:36:29'),(25,'2022-07-19 23:37:16'),(26,'2022-07-19 23:39:27'),(28,'2022-07-19 23:42:24'),(29,'2022-07-19 23:44:06'),(30,'2022-07-19 23:45:12'),(31,'2022-07-19 23:47:05'),(32,'2022-07-19 23:50:27');
 /*!40000 ALTER TABLE `album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +117,7 @@ CREATE TABLE `artist` (
 
 LOCK TABLES `artist` WRITE;
 /*!40000 ALTER TABLE `artist` DISABLE KEYS */;
-INSERT INTO `artist` VALUES ('andre@email.com','sem nome','sem descricao',1),('andre@follow.com','sem nome','sem descricao',1),('bru@email.com','sem nome','sem descricao',1),('bruno@follow.com','sem nome','sem descricao',1),('bruno@gmail.com','happy','soluta',1);
+INSERT INTO `artist` VALUES ('andre@email.com','sem nome','sem descricao',1),('bru@email.com','sem nome','sem descricao',1),('bruno@follow.com','sem nome','sem descricao',1),('bruno@gmail.com','happy','soluta',1);
 /*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +145,7 @@ CREATE TABLE `artist_cadastra_album` (
 
 LOCK TABLES `artist_cadastra_album` WRITE;
 /*!40000 ALTER TABLE `artist_cadastra_album` DISABLE KEYS */;
-INSERT INTO `artist_cadastra_album` VALUES ('bruno@gmail.com',1),('bruno@gmail.com',26),('bruno@gmail.com',28),('bruno@gmail.com',29),('bruno@gmail.com',30),('bruno@gmail.com',31),('bruno@gmail.com',32),('andre@follow.com',33),('andre@follow.com',34),('andre@follow.com',35),('andre@follow.com',36);
+INSERT INTO `artist_cadastra_album` VALUES ('bruno@gmail.com',1),('bruno@gmail.com',26),('bruno@gmail.com',28),('bruno@gmail.com',29),('bruno@gmail.com',30),('bruno@gmail.com',31),('bruno@gmail.com',32);
 /*!40000 ALTER TABLE `artist_cadastra_album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,8 +196,12 @@ CREATE TABLE `feature` (
 --
 
 LOCK TABLES `feature` WRITE;
+INSERT INTO `feature` VALUES ('feat1','passasdfas');
+INSERT INTO `feature` VALUES ('feat2','passasdfas');
+INSERT INTO `feature` VALUES ('feat3','passasdfas');
+INSERT INTO `feature` VALUES ('feat4','passasdfas');
+
 /*!40000 ALTER TABLE `feature` DISABLE KEYS */;
-INSERT INTO `feature` VALUES ('feat1','passasdfas'),('feat2','passasdfas'),('feat3','passasdfas'),('feat4','passasdfas');
 /*!40000 ALTER TABLE `feature` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +219,7 @@ CREATE TABLE `list` (
   `duration_time` int(11) NOT NULL DEFAULT '0',
   `picture` mediumtext,
   PRIMARY KEY (`id_list`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +228,7 @@ CREATE TABLE `list` (
 
 LOCK TABLES `list` WRITE;
 /*!40000 ALTER TABLE `list` DISABLE KEYS */;
-INSERT INTO `list` VALUES (1,'Primeiro',0,0,NULL),(10,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(11,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(25,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(26,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(28,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(29,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(30,'api',0,0,'brenda.jpg'),(31,'api',0,0,'brenda.jpg'),(32,'Build',0,0,NULL),(33,'Bruno Wagner',0,0,'Captura de tela de 2022-05-30 17-59-28.png'),(34,'SÃ³ la se do',0,0,NULL),(35,'bruno',0,0,NULL),(36,'bruno',0,0,'assinatura-email-bruno.png');
+INSERT INTO `list` VALUES (1,'Primeiro',0,0,NULL),(10,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(11,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(25,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(26,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(28,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(29,'GÃªnero',0,0,'12a60e13-3c18-4132-a43f-1d3ac215060e.jpeg'),(30,'api',0,0,'brenda.jpg'),(31,'api',0,0,'brenda.jpg'),(32,'Build',0,0,NULL);
 /*!40000 ALTER TABLE `list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -488,7 +492,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('andre@email.com','6f6fa3613fa06d0e5f7b02b3a6266807e27e6a79','andre','oioi','oioi'),('andre@follow.com','$2y$10$too/Ja/pvKGidsTo06GOYukry3FwMSJoNGeymNKQj4w79Q39Fumjm','Andre','456','456'),('asdf@asdf.com','$2y$10$Glu.yPHfxtdt8nVY2p7ieuz0FwpoI1KbOA7WamHVFMrq3tDs8rWVi','Bruno','1234','1234'),('bru@email.com','asdfasdf','adadfd','adfadf','asdfasdf'),('bruno@follow.com','$2y$10$L35hWgTJBBqdu9IlJnRfT.dFh1QmLOVXJiqPoXi0wMJb0r6gjkFDW','Bruno Wagner','123','123'),('bruno@gmail.com','1234','brunowagner','Oi','oi'),('caito@ok.com','2651c2a44c389403c19ba8e93d90b3093cb50449','Couto','fuifui','fiufiu'),('outro@google.com','d247d73fd2de0a03f9dbf1e79c2c3f266c7ae2f0','Outro','okok','okok');
+INSERT INTO `user` VALUES ('andre@email.com','6f6fa3613fa06d0e5f7b02b3a6266807e27e6a79','andre','oioi','oioi'),('andre@follow.com','$2y$10$too/Ja/pvKGidsTo06GOYukry3FwMSJoNGeymNKQj4w79Q39Fumjm','Andre','456','456'),('bru@email.com','asdfasdf','adadfd','adfadf','asdfasdf'),('bruno@follow.com','$2y$10$L35hWgTJBBqdu9IlJnRfT.dFh1QmLOVXJiqPoXi0wMJb0r6gjkFDW','Bruno Wagner','123','123'),('bruno@gmail.com','1234','brunowagner','Oi','oi'),('caito@ok.com','2651c2a44c389403c19ba8e93d90b3093cb50449','Couto','fuifui','fiufiu'),('outro@google.com','d247d73fd2de0a03f9dbf1e79c2c3f266c7ae2f0','Outro','okok','okok');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -556,4 +560,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-20 17:02:57
+-- Dump completed on 2022-07-20  5:25:05

@@ -4,8 +4,8 @@ namespace IMDSound\Controllers\Features;
 
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
-use IMDSound\Infra\ConnectionCreator;
-use IMDSound\Infra\PdoFeaturesRepository;
+use IMDSound\Database\ConnectionCreator;
+use IMDSound\Database\PdoFeaturesRepository;
 
 class FeaturesListController extends ControllerComHtml implements InterfaceControladorRequisicao
 {

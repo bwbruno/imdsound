@@ -4,8 +4,8 @@ namespace IMDSound\Controllers\MusicGenre;
 
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
-use IMDSound\Infra\ConnectionCreator;
-use IMDSound\Infra\PdoMusicGenreRepository;
+use IMDSound\Database\ConnectionCreator;
+use IMDSound\Database\PdoMusicGenreRepository;
 
 class MusicGenreListController extends ControllerComHtml implements InterfaceControladorRequisicao
 {

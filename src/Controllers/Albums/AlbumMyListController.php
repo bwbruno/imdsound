@@ -4,8 +4,8 @@ namespace IMDSound\Controllers\Albums;
 
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
-use IMDSound\Infra\ConnectionCreator;
-use IMDSound\Infra\PdoAlbumRepository;
+use IMDSound\Database\ConnectionCreator;
+use IMDSound\Database\PdoAlbumRepository;
 
 class AlbumMyListController extends ControllerComHtml implements InterfaceControladorRequisicao
 {

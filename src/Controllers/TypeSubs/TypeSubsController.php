@@ -4,8 +4,8 @@ namespace IMDSound\Controllers\TypeSubs;
 
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
-use IMDSound\Infra\ConnectionCreator;
-use IMDSound\Infra\PdoTypeSubsRepository;
+use IMDSound\Database\ConnectionCreator;
+use IMDSound\Database\PdoTypeSubsRepository;
 use IMDSound\Models\TypeSubs;
 
 class TypeSubsController extends ControllerComHtml implements InterfaceControladorRequisicao

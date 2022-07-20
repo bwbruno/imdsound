@@ -4,9 +4,9 @@ namespace IMDSound\Controllers\Login;
 
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
-use IMDSound\Infra\ConnectionCreator;
-use IMDSound\Infra\PdoArtistRepository;
-use IMDSound\Infra\PdoUserRepository;
+use IMDSound\Database\ConnectionCreator;
+use IMDSound\Database\PdoArtistRepository;
+use IMDSound\Database\PdoUserRepository;
 
 class LoginController extends ControllerComHtml implements InterfaceControladorRequisicao
 {

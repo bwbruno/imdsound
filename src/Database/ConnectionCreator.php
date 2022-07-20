@@ -1,6 +1,6 @@
 <?php
 
-namespace IMDSound\Infra;
+namespace IMDSound\Database;
 
 use PDO;
 

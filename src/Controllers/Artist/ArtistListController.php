@@ -4,9 +4,9 @@ namespace IMDSound\Controllers\Artist;
 
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
-use IMDSound\Infra\ConnectionCreator;
-use IMDSound\Infra\PdoArtistRepository;
-use IMDSound\Infra\PdoUserRepository;
+use IMDSound\Database\ConnectionCreator;
+use IMDSound\Database\PdoArtistRepository;
+use IMDSound\Database\PdoUserRepository;
 use IMDSound\Models\User;
 
 class ArtistListController extends ControllerComHtml implements InterfaceControladorRequisicao

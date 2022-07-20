@@ -4,10 +4,10 @@ namespace IMDSound\Controllers\Albums;
 
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
-use IMDSound\Infra\ConnectionCreator;
-use IMDSound\Infra\PdoAlbumRepository;
-use IMDSound\Infra\PdoArtistRepository;
-use IMDSound\Infra\PdoMusicGenreRepository;
+use IMDSound\Database\ConnectionCreator;
+use IMDSound\Database\PdoAlbumRepository;
+use IMDSound\Database\PdoArtistRepository;
+use IMDSound\Database\PdoMusicGenreRepository;
 use IMDSound\Models\Album;
 use IMDSound\Models\MusicGenre;
 

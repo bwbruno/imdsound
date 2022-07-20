@@ -2,8 +2,8 @@
 
 namespace IMDSound\Controllers\Home;
 
-use IMDSound\Infra\ConnectionCreator;
-use IMDSound\Infra\PdoUserRepository;
+use IMDSound\Database\ConnectionCreator;
+use IMDSound\Database\PdoUserRepository;
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
 
