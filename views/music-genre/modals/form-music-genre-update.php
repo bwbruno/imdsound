@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                        <input name="oldGenero" type="text" value="Gênero"
+                        <input name="oldGenero" type="hidden" value="Gênero"
                                     class="form-control"
                                     onfocus="if (this.value == 'Gênero') {this.value = '';}"
                                     onblur="if (this.value == '') {this.value = 'Gênero';}"

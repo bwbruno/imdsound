@@ -27,10 +27,11 @@ class AlbumMyListController extends ControllerComHtml implements InterfaceContro
                 'albums' => $this->repository->all(),
                 'title' => 'Meus álbuns'
             ]);
+            exit();
         }
 
         $_SESSION['tipo_mensagem'] = 'danger';
-        $_SESSION['mensagem'] = "Você não tem permissão para acessar my-albums";
+        $_SESSION['mensagem'] = "Você não tem permissão para acessar 'Meus álbuns'";
 
         header('Location: /home');
     }

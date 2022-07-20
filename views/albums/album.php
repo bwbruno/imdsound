@@ -15,7 +15,7 @@
 					<div class="col-sm-3">
 						<img data-src="holder.js/200x200" class="img-thumbnail"
 						alt="200x200" style="width: 200px; height: 200px; display: block; margin:auto;" 
-						src="images/a1.jpg" data-holder-rendered="true">
+						src=" <?= $_ENV['STORAGE']; ?>/<?= $album->getPicture();  ?>" data-holder-rendered="true">
 					</div>
 					<div class="col-sm-9">
                         <?php /**

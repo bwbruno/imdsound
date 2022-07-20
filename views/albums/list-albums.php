@@ -7,7 +7,6 @@
     <div class="main-content">
         <?php include __DIR__ . '/../components/header-section.php'; ?>
 
-
         <div id="page-wrapper">
 
             <div class="inner-content">
@@ -18,7 +17,6 @@
                             <div class="tittle-head two">
                                 <h3 class="tittle">
                                     <?= $title ?>
-                                    <a class="new btn btn-primary btn-sm" href="#" role="button">Adicionar</a>
                                 </h3>
                                 <div class="clearfix"> </div>
                             </div>
