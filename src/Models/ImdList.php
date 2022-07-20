@@ -5,28 +5,14 @@ namespace IMDSound\Models;
 class ImdList
 {
 
-    private int $idList;
-    private string $name;
-    private int $numLikes;
-    private int $durationTime;
+    private ?int $idList;
+    private ?string $name;
+    private ?int $numLikes;
+    private ?int $durationTime;
     private ?string $picture;
-    private array $genres = [];
+    private ?array $genres = [];
 
-    /**
-     * @param int $idList
-     * @param string $name
-     * @param int $numLikes
-     * @param int $durationTime
-     * @param string $picture
-     */
-    public function __construct(int $idList, string $name, int $numLikes, int $durationTime, ?string $picture)
-    {
-        $this->idList = $idList;
-        $this->name = $name;
-        $this->numLikes = $numLikes;
-        $this->durationTime = $durationTime;
-        $this->picture = $picture;
-    }
+
 
     public function getId()
     {
@@ -38,9 +24,10 @@ class ImdList
         return $this->name;
     }
 
-    public function setName($name): void
+    public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     public function getNumLikes()
@@ -48,9 +35,10 @@ class ImdList
         return $this->numLikes;
     }
 
-    public function setNumLikes(): void
+    public function setNumLikes()
     {
         $this->numLikes++;
+        return $this;
     }
 
     public function getDurationTime()
@@ -58,9 +46,10 @@ class ImdList
         return $this->durationTime;
     }
 
-    public function setDurationTime($durationTime): void
+    public function setDurationTime($durationTime)
     {
         $this->durationTime = $durationTime;
+        return $this;
     }
 
 
@@ -69,9 +58,10 @@ class ImdList
         return $this->picture;
     }
 
-    public function setPicture($picture): void
+    public function setPicture($picture)
     {
         $this->picture = $picture;
+        return $this;
     }
 
     public function getGenres(): array
@@ -82,9 +72,18 @@ class ImdList
     /**
      * @param MusicGenre $genres
      */
-    public function addGenre(MusicGenre $genre): void
+    public function addGenre(MusicGenre $genre)
     {
         $this->genres[] = $genre;
+    }
+
+    protected function fillListWithRow(array $row)
+    {
+        $this->idList = $row['id_list'];
+        $this->name = $row['name'];
+        $this->numLikes = $row['num_likes'];
+        $this->durationTime = $row['duration_time'];
+        $this->picture = $row['picture'];
     }
 
 }

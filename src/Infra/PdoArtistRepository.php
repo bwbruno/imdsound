@@ -42,6 +42,23 @@ class PdoArtistRepository
         return $success;
     }
 
+    public function insertAlbum(int $album_list_id_list): bool
+    {
+
+        $insertQuery =
+            'INSERT INTO artist_cadastra_album (artist_user_email, album_list_id_list) ' .
+            'VALUES (:artist_user_email, :album_list_id_list);';
+
+        $stmt = $this->connection->prepare($insertQuery);
+
+        $success = $stmt->execute([
+            ':artist_user_email' => 'bruno@gmail.com',
+            ':album_list_id_list' => $album_list_id_list,
+        ]);
+
+        return $success;
+    }
+
     private function update(User $user): bool
     {
         $updateQuery = 'UPDATE users SET name = :name WHERE id = :id;';

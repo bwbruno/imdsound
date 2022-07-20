@@ -21,12 +21,38 @@ class PdoAlbumRepository
         return true;
     }
 
-    public function insert(Album $album): bool
+    public function insert(Album $album): int
     {
 
-        //TODO
+        $insertQuery =
+            'INSERT INTO list (name, picture) ' .
+            'VALUES (:name, :picture);';
+        $stmt = $this->connection->prepare($insertQuery);
+        $success = $stmt->execute([
+            ':name' => $album->getName(),
+            ':picture' => $album->getPicture(),
+        ]);
 
-        return true;
+        $id = $this->connection->lastInsertId();
+
+        $insertQuery =
+            'INSERT INTO album (list_id_list) ' .
+            'VALUES (:id);';
+        $stmt = $this->connection->prepare($insertQuery);
+        $success = $stmt->execute([
+            ':id' => $id,
+        ]);
+
+        $insertQuery =
+            'INSERT INTO artist_cadastra_album (artist_user_email, album_list_id_list) ' .
+            'VALUES (:artist_user_email, :album_list_id_list);';
+        $stmt = $this->connection->prepare($insertQuery);
+        $success = $stmt->execute([
+            ':artist_user_email' => 'bruno@gmail.com',
+            ':album_list_id_list' => $id,
+        ]);
+
+        return $success;
     }
 
     private function update(Album $album): bool
@@ -45,14 +71,10 @@ class PdoAlbumRepository
 
     public function hydrateAlbum($albumData) : Album
     {
-        return new Album(
-            $albumData['id_list'],
-            $albumData['name'],
-            $albumData['num_likes'],
-            $albumData['duration_time'],
-            $albumData['picture'],
-            new \DateTimeImmutable($albumData['data_cadastro'])
-        );
+        $album = new Album();
+        $album->fillWithRow($albumData);
+
+        return $album;
     }
 
     private function hydrateAlbumList(\PDOStatement $stmt): array

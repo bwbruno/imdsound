@@ -5,6 +5,8 @@
 */
 
 use IMDSound\Controllers\Albums\AlbumListController;
+use IMDSound\Controllers\Albums\AlbumMyListController;
+use IMDSound\Controllers\Albums\AlbumCreateController;
 use IMDSound\Controllers\Artist\ArtistListController;
 use IMDSound\Controllers\Artist\ArtistPromotionController;
 use IMDSound\Controllers\Features\ListFeaturesController;
@@ -27,4 +29,6 @@ return [
     '/music_genre/create' => MusicGenreCreateController::class,
     '/typeSubs' => TypeSubsController::class,
     '/albums' => AlbumListController::class,
+    '/my-albums' => AlbumMyListController::class,
+    '/album/create' => AlbumCreateController::class,
 ];

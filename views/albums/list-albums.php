@@ -7,6 +7,7 @@
     <div class="main-content">
         <?php include __DIR__ . '/../components/header-section.php'; ?>
 
+
         <div id="page-wrapper">
 
             <div class="inner-content">
