@@ -14,7 +14,7 @@
                         <input name="genero" type="text" value="Gênero"
                                class="form-control"
                                onfocus="if (this.value == 'Gênero') {this.value = '';}"
-                               onblur="if (this.value == '') {this.value = 'Gênero';}"
+                               onblur="if (this.value == 'Gênero') {this.value = 'Gênero';}"
                                required>
                 </div>
             </div>

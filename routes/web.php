@@ -4,10 +4,16 @@
     Todas as rotas
 */
 
+use IMDSound\Controllers\Albums\AlbumListController;
+use IMDSound\Controllers\Albums\AlbumMyListController;
+use IMDSound\Controllers\Albums\AlbumCreateController;
 use IMDSound\Controllers\Artist\ArtistListController;
 use IMDSound\Controllers\Artist\ArtistPromotionController;
 use IMDSound\Controllers\Features\ListFeaturesController;
 use IMDSound\Controllers\Home\HomeController;
+use IMDSound\Controllers\Login\LoginController;
+use IMDSound\Controllers\Login\LogoutController;
+use IMDSound\Controllers\MusicGenre\MusicGenreCreateController;
 use IMDSound\Controllers\User\UserCreateController;
 use IMDSound\Controllers\User\UserListController;
 use IMDSound\Controllers\MusicGenre\MusicGenreListController;
@@ -29,4 +35,9 @@ return [
     '/music_genre/remove' => MusicGenreDeleteController::class,
     '/music_genre/update' => MusicGenreUpdateController::class,
     '/typeSubs' => TypeSubsController::class,
+    '/albums' => AlbumListController::class,
+    '/my-albums' => AlbumMyListController::class,
+    '/album/create' => AlbumCreateController::class,
+    '/login' => LoginController::class,
+    '/logout' => LogoutController::class
 ];

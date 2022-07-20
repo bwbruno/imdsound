@@ -8,7 +8,10 @@
 			<?php include __DIR__ . '/../components/header-section.php'; ?>
 
             <div id="page-wrapper">
+                <?php include __DIR__ . '/../components/flash-mensage.php'; ?>
+
 				<div class="jumbotron row">
+
 					<div class="col-sm-3">
 						<img data-src="holder.js/200x200" class="img-thumbnail" 
 						alt="200x200" style="width: 200px; height: 200px; display: block; margin:auto;" 
@@ -57,7 +60,7 @@
 
 				<div class="inner-content">
 					<div class="music-browse">
-							
+
 					<?php 
 						$titles = [
 							'Coloque o volume no máximo',

@@ -5,6 +5,7 @@
     <!--notification menu start -->
     <div class="menu-right">
         <div class="profile_details">
+            <!-- search-scripts -->
             <div class="col-md-4 serch-part">
                 <div id="sb-search" class="sb-search">
                     <form action="#" method="post">
@@ -15,7 +16,6 @@
                     </form>
                 </div>
             </div>
-            <!-- search-scripts -->
             <script src="/js/classie.js"></script>
             <script src="/js/uisearch.js"></script>
             <script>
@@ -57,42 +57,60 @@
 
                 </ul>
             </div>
+
+            <?php if (isset($_SESSION['login'])): ?>
+
             <div class="col-md-4 login-pop">
                 <div id="loginpop">
-                    <a href="#" id="loginButton">
-                        <span>Entrar</span>
-                    </a>
-
-                    <!--
-                    <a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5">
+                    <a class="top-sign" href="/logout">
                         <i class="fa fa-sign-in"></i>
                     </a>
-                    //-->
-                    
-                    <div id="loginBox">
-                        <form action="#" method="post" id="loginForm">
-                            <fieldset id="body">
-                                <fieldset>
-                                    <label for="email">Email</label>
-                                    <input type="text" name="email" id="email">
-                                </fieldset>
-                                <fieldset>
-                                    <label for="password">Senha</label>
-                                    <input type="password" name="password" id="password">
-                                </fieldset>
-                                <input type="submit" id="login" value="Entrar">
-                                <label for="checkbox">
+                    <a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5">
+                        <i> <?= $_SESSION['name']; ?></i>
+                    </a>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <?php if (!isset($_SESSION['login'])): ?>
+
+                <div class="col-md-4 login-pop">
+                    <div id="loginpop">
+                        <a href="#" id="loginButton">
+                            <span>Entrar</span>
+                        </a>
+
+                        <!--
+                        <a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5">
+                            <i class="fa fa-sign-in"></i>
+                        </a>
+                        //-->
+
+                        <div id="loginBox">
+                            <form action="login" method="post" id="loginForm">
+                                <fieldset id="body">
+                                    <fieldset>
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" id="email">
+                                    </fieldset>
+                                    <fieldset>
+                                        <label for="password">Senha</label>
+                                        <input type="password" name="password" id="password">
+                                    </fieldset>
+                                    <input type="submit" id="login" value="Entrar">
+                                    <label for="checkbox">
                                     <span>
                                     <a href="#" data-toggle="modal" data-target="#myModal5">Inscrever-se</a>
                                     </span>
-                                </label>
-                            </fieldset>
-                            
-                        </form>
+                                    </label>
+                                </fieldset>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
+            <?php endif; ?>
 
-            </div>
             <div class="clearfix"> </div>
         </div>
         <!-------->

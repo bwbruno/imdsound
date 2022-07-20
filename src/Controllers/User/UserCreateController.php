@@ -20,7 +20,6 @@ class UserCreateController extends ControllerComHtml implements InterfaceControl
         $this->userRepository = new PdoUserRepository($this->pdo);
     }
 
-   
     public function processaRequisicao(): void
     {
 
@@ -33,11 +32,11 @@ class UserCreateController extends ControllerComHtml implements InterfaceControl
         ];
 
         $filteredInputs = filter_input_array(INPUT_POST, $inputs);
-        $sha1Password = sha1($filteredInputs['password'] . $_ENV['SALT']);
+        $securePassword = password_hash($filteredInputs['password'] . $_ENV['SALT'], PASSWORD_DEFAULT);
 
         $user = new User(
             $filteredInputs['email'],
-            $sha1Password,
+            $securePassword,
             $filteredInputs['name'], 
             $filteredInputs['country'], 
             $filteredInputs['phone_number']

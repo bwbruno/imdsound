@@ -66,4 +66,9 @@ class User
         return isset($this->artist);
     }
 
+    public function validatePassword(string $password)
+    {
+        return password_verify($password, $this->password);
+    }
+
 }

@@ -65,7 +65,7 @@ class PdoUserRepository implements UserRepository
 
     private function update(User $user): bool
     {
-        $updateQuery = 'UPDATE users SET name = :name WHERE id = :id;';
+        $updateQuery = 'UPDATE user SET name = :name WHERE id = :id;';
         $stmt = $this->connection->prepare($updateQuery);
         $stmt->bindValue(':name', $user->name());
         $stmt->bindValue(':id', $user->email(), PDO::PARAM_INT);
@@ -83,12 +83,11 @@ class PdoUserRepository implements UserRepository
 
     public function findByEmail(string $email): User
     {
-        $sqlQuery = 'SELECT * FROM user WHERE email = ?;';
-        $stmt = $this->connection->query($sqlQuery);
-        $stmt->bindValue(1, $email);
-        $userData = $stmt->fetch();
+        $stmt = $this->connection->prepare("SELECT * FROM user WHERE email = ? LIMIT 1");
+        $stmt->execute([$email]);
+        $row = $stmt->fetch();
 
-        return $this->hydrateUser($userData);;
+        return $this->hydrateUser($row);;
     }
 
     public function hydrateUser($userData) : User

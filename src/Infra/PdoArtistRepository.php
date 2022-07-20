@@ -62,14 +62,12 @@ class PdoArtistRepository
 
     public function findByEmail(string $email): Artist
     {
-        $sqlQuery = 'SELECT * FROM artist WHERE email = ?;';
-        $stmt = $this->connection->query($sqlQuery);
-        $stmt->bindValue(1, $email);
-        $data = $stmt->fetch();
+        $stmt = $this->connection->prepare("SELECT * FROM artist WHERE user_email = ? LIMIT 1");
+        $stmt->execute([$email]);
+        $row = $stmt->fetch();
 
-        return $this->hydrateArtist($data);;
+        return $this->hydrateArtist($row);;
     }
-
     public function hydrateArtist($data) : Artist
     {
         return new Artist(
@@ -91,4 +89,5 @@ class PdoArtistRepository
 
         return $list;
     }
+
 }

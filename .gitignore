@@ -1,5 +1,6 @@
 composer.phar
 /vendor/
+/storage/uploads/
 .env
 /.idea
 
