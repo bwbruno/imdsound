@@ -52,7 +52,7 @@ class AlbumCreateController extends ControllerComHtml implements InterfaceContro
 
     /* FROM https://www.w3schools.com/php/php_file_upload.asp */
     private function uploadCapa() {
-        $target_dir = "/var/www/storage/uploads/";
+        $target_dir = "/var/www/public/uploads/";
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
