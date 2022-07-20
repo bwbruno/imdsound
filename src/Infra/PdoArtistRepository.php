@@ -42,23 +42,6 @@ class PdoArtistRepository
         return $success;
     }
 
-    public function insertAlbum(int $album_list_id_list): bool
-    {
-
-        $insertQuery =
-            'INSERT INTO artist_cadastra_album (artist_user_email, album_list_id_list) ' .
-            'VALUES (:artist_user_email, :album_list_id_list);';
-
-        $stmt = $this->connection->prepare($insertQuery);
-
-        $success = $stmt->execute([
-            ':artist_user_email' => 'bruno@gmail.com',
-            ':album_list_id_list' => $album_list_id_list,
-        ]);
-
-        return $success;
-    }
-
     private function update(User $user): bool
     {
         $updateQuery = 'UPDATE users SET name = :name WHERE id = :id;';
@@ -79,14 +62,12 @@ class PdoArtistRepository
 
     public function findByEmail(string $email): Artist
     {
-        $sqlQuery = 'SELECT * FROM artist WHERE email = ?;';
-        $stmt = $this->connection->query($sqlQuery);
-        $stmt->bindValue(1, $email);
-        $data = $stmt->fetch();
+        $stmt = $this->connection->prepare("SELECT * FROM artist WHERE user_email = ? LIMIT 1");
+        $stmt->execute([$email]);
+        $row = $stmt->fetch();
 
-        return $this->hydrateArtist($data);;
+        return $this->hydrateArtist($row);;
     }
-
     public function hydrateArtist($data) : Artist
     {
         return new Artist(

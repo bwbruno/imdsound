@@ -11,6 +11,8 @@ use IMDSound\Controllers\Artist\ArtistListController;
 use IMDSound\Controllers\Artist\ArtistPromotionController;
 use IMDSound\Controllers\Features\ListFeaturesController;
 use IMDSound\Controllers\Home\HomeController;
+use IMDSound\Controllers\Login\LoginController;
+use IMDSound\Controllers\Login\LogoutController;
 use IMDSound\Controllers\MusicGenre\MusicGenreCreateController;
 use IMDSound\Controllers\User\UserCreateController;
 use IMDSound\Controllers\User\UserListController;
@@ -31,4 +33,6 @@ return [
     '/albums' => AlbumListController::class,
     '/my-albums' => AlbumMyListController::class,
     '/album/create' => AlbumCreateController::class,
+    '/login' => LoginController::class,
+    '/logout' => LogoutController::class
 ];

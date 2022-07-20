@@ -21,9 +21,17 @@ class AlbumMyListController extends ControllerComHtml implements InterfaceContro
 
     public function processaRequisicao(): void
     {
-        echo $this->renderizaHtml('albums/my-albums.php', [
-            'albums' => $this->repository->all(),
-            'title' => 'Meus álbuns'
-        ]);
+
+        if(isset($_SESSION["artista"])) {
+            echo $this->renderizaHtml('albums/my-albums.php', [
+                'albums' => $this->repository->all(),
+                'title' => 'Meus álbuns'
+            ]);
+        }
+
+        $_SESSION['tipo_mensagem'] = 'danger';
+        $_SESSION['mensagem'] = "Você não tem permissão para acessar my-albums";
+
+        header('Location: /home');
     }
 }

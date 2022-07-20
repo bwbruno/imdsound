@@ -47,10 +47,9 @@ class PdoAlbumRepository
             'INSERT INTO artist_cadastra_album (artist_user_email, album_list_id_list) ' .
             'VALUES (:artist_user_email, :album_list_id_list);';
         $stmt = $this->connection->prepare($insertQuery);
-        $success = $stmt->execute([
-            ':artist_user_email' => 'bruno@gmail.com',
-            ':album_list_id_list' => $id,
-        ]);
+        $stmt->bindValue(':artist_user_email', $_SESSION["email"], PDO::PARAM_STR);
+        $stmt->bindValue(':album_list_id_list', $id, PDO::PARAM_INT);
+        $success = $stmt->execute();
 
         return $success;
     }

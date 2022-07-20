@@ -43,7 +43,7 @@ class AlbumCreateController extends ControllerComHtml implements InterfaceContro
             $this->albumRepository->insert($album);
             $this->pdo->commit();
         } catch(\PDOException $e) {
-            // echo $e->getMessage();
+            echo $e->getMessage();
             $this->pdo->rollBack();
         }
 
