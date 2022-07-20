@@ -196,6 +196,11 @@ CREATE TABLE `feature` (
 --
 
 LOCK TABLES `feature` WRITE;
+INSERT INTO `feature` VALUES ('feat1','passasdfas');
+INSERT INTO `feature` VALUES ('feat2','passasdfas');
+INSERT INTO `feature` VALUES ('feat3','passasdfas');
+INSERT INTO `feature` VALUES ('feat4','passasdfas');
+
 /*!40000 ALTER TABLE `feature` DISABLE KEYS */;
 /*!40000 ALTER TABLE `feature` ENABLE KEYS */;
 UNLOCK TABLES;
