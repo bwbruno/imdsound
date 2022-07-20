@@ -3,6 +3,7 @@
 namespace IMDSound\Infra;
 
 use IMDSound\Models\Album;
+use IMDSound\Models\Artist;
 use PDO;
 
 class PdoAlbumRepository
@@ -109,5 +110,31 @@ class PdoAlbumRepository
         $stmt->bindValue(':artist_email', $artist_email);
 
         return $this->hydrateAlbumList($stmt);
+    }
+
+    public function findById(string $id): Album
+    {
+        $stmt = $this->connection->prepare("
+            SELECT *, l.name as name, ar.name as artname  FROM list l
+            JOIN album a ON l.id_list = a.list_id_list 
+            JOIN artist_cadastra_album aca ON a.list_id_list = aca.album_list_id_list 
+            JOIN artist ar ON ar.user_email = aca.artist_user_email
+            WHERE id_list = ? LIMIT 1
+        ");
+
+        $stmt->execute([$id]);
+        $row = $stmt->fetch();
+
+        $album = $this->hydrateAlbum($row);
+
+
+        $artist = new Artist(  $row['user_email'], $row['admin_id_admin']);
+        $artist->setName($row['artname']);
+        $artist->setDescription($row['description']);
+
+        $album->setArtist($artist);
+
+
+        return $album;
     }
 }

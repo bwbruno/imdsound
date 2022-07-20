@@ -29,7 +29,8 @@
                         <source src="/media/Blue Browne.ogg" type="audio/ogg"></source>
                         <source src="/media/Blue Browne.mp3" type="audio/mpeg"></source>
                         <source src="/media/Georgia.ogg" type="audio/ogg"></source>
-                        <source src="/media/Georgia.mp3" type="audio/mpeg"></source></audio>
+                        <source src="/media/Georgia.mp3" type="audio/mpeg"></source>
+                    </audio>
                 </div>
                 <!---->
                 <script type="text/javascript">
@@ -49,8 +50,6 @@
                 <script type="text/javascript" src="/js/mediaelement-and-player.min.js"></script>
                 <!---->
 
-
-                
                 <ul class="next-top">
                     <li><a class="ar" href="#"> <img src="images/arrow.png" alt=""/></a></li>
                     <li><a class="ar2" href="#"><img src="images/arrow2.png" alt=""/></i></a></li>

@@ -4589,3 +4589,18 @@ text-decoration:none;
 .jumbotron {
 	border-radius: 5px;
 }
+
+.jumbotron span {
+    margin: 0 5px;
+}
+
+.jumbotron h2,
+.jumbotron h3,
+.jumbotron h5 {
+    padding: 0;
+    margin-top: 10px;
+}
+
+.jumbotron h5 {
+    margin-bottom: 1rem;
+}

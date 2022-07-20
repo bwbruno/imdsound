@@ -7,7 +7,7 @@ use IMDSound\Controllers\InterfaceControladorRequisicao;
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
-$caminho = $_SERVER['REQUEST_URI'];
+$caminho = parse_url($_SERVER['REQUEST_URI'])["path"];
 $rotas = require __DIR__ . '/../routes/web.php';
 
 if (array_key_exists($caminho, $rotas)) {

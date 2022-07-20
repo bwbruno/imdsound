@@ -55,7 +55,21 @@ class Artist implements \JsonSerializable
         return $this->albums;
     }
 
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
 
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
 
     public function jsonSerialize()
     {

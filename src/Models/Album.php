@@ -5,6 +5,7 @@ namespace IMDSound\Models;
 class Album extends ImdList
 {
     private \DateTimeInterface $dataCadastro;
+    private ?Artist $artist;
 
     public function getDataCadastro()
     {
@@ -17,6 +18,21 @@ class Album extends ImdList
         $this->dataCadastro =  new \DateTimeImmutable($row['data_cadastro']);
     }
 
+    /**
+     * @return Artist|null
+     */
+    public function getArtist(): ?Artist
+    {
+        return $this->artist;
+    }
+
+    /**
+     * @param Artist|null $artist
+     */
+    public function setArtist(?Artist $artist): void
+    {
+        $this->artist = $artist;
+    }
 
 
 }
