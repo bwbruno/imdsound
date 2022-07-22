@@ -55,7 +55,17 @@ class ImdList
 
     public function getPicture()
     {
-        return $this->picture;
+        return  $this->picture;
+    }
+
+    public function getPictureURL()
+    {
+        if (isset($this->picture)) {
+            return "uploads/" . $this->picture;
+        }
+
+        return "uploads/semimagem.png";
+
     }
 
     public function setPicture($picture)

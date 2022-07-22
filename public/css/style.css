@@ -250,7 +250,7 @@ div#page-wrapper {
 }
 
 .custom-nav > li.nav-active > a:hover {
-    
+
 }
 
 .custom-nav > li.active > a,
@@ -415,7 +415,7 @@ h5.left-nav-title {
     text-align: center;
     padding: 10px;
     position: relative;
-	
+
 }
 
 .left-side-collapsed .custom-nav > li.menu-list > a {
@@ -986,7 +986,7 @@ footer  p a:hover{
   -moz-border-radius:50%;
   -o-border-radius:50%;
   -ms-border-radius:50%;
-  
+
 }
 .callbacks_here a:after{
   background:#45B39D;
@@ -1058,14 +1058,14 @@ a.trend:hover {
 	z-index:0;
 }
 .next-top li{
-	display:inline-block;	
+	display:inline-block;
 }
 .next-top li a.ar {
     left: -7%;
     position: absolute;
     top: -22px;
 }
-.next-top li a.ar2{	
+.next-top li a.ar2{
 	    left: 10%;
     position: absolute;
     top: -22px;
@@ -1119,8 +1119,8 @@ i.arrow {
 	 color:#fff;
  }
 /* Login Button */
-#loginButton { 
-    display:inline-block;  
+#loginButton {
+    display:inline-block;
     position:relative;
     z-index:30;
     cursor:pointer;
@@ -1206,7 +1206,7 @@ fieldset#body {
   -webkit-border-radius:0.3em;
   -moz-border-radius:0.3em;
   font-family: 'Open Sans', sans-serif;
-  
+
 }
 #loginForm #login:hover{
      background:#EA57A3;
@@ -1343,7 +1343,7 @@ a.top-sign {
 }
 .inner-info ul li a i {
     font-size: 0.9em;
-	
+
 }
 h3.tittle {
     float: left;
@@ -1852,7 +1852,7 @@ p.email span a{
 	color:#EA57A3;
 }
 p.email span:hover{
-	text-decoration:underline; 
+	text-decoration:underline;
 }
 /*-- wthree --*/
 /*-- agileits --*/
@@ -1909,7 +1909,7 @@ p.email span:hover{
 }
 .nbs-flexisel-nav-right {
 	display:none;
-}	
+}
 .review-slider {
 margin-top: 1.4em;
 }
@@ -2034,7 +2034,7 @@ h4.tittle.third {
 /*---browse-grid-----*/
 /*---browse-grid-----*/
 .artist-grid {
-   width: 16.66%;
+    width: 16.66%;
     float: left;
     text-align: center;
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.35);
@@ -2050,6 +2050,25 @@ h4.tittle.third {
 	-moz-border-radius: 4px 4px 0px 0px;
 	-webkit-border-radius: 4px 4px 0px 0px;
 }
+
+.square {
+    position: relative;
+    width: 100%;
+    padding-bottom : 100%; /* = width for a 1:1 aspect ratio */
+    background-position:center center;
+    background-repeat:no-repeat;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.35);
+    background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
+    border-radius: 4px 4px 0px 0px;
+    -o-border-radius: 4px 4px 0px 0px;
+    -moz-border-radius: 4px 4px 0px 0px;
+    -webkit-border-radius: 4px 4px 0px 0px;
+}
+
+.square:hover {
+    opacity: 0.8;
+}
+
 .artist-grid:nth-child(6),.artist-grid:nth-child(12) {
     margin-left: 0%;
 }
@@ -2059,7 +2078,7 @@ h4.tittle.third {
 i.glyphicon.glyphicon-play-circle {
     position: absolute;
     top:30%;
-    left: 40%;
+    left: 35%;
     color: #fff;
     font-size: 3em;
 }
@@ -2085,7 +2104,7 @@ a.art:hover{
     margin-bottom: 1em;
 }
 h4.tittle.third {
-       float: right;
+    float: right;
     margin-right: 1%;
     margin-left: 0;
 }
@@ -2441,8 +2460,8 @@ li.list-group-item1 {
 }
 .tab-content {
 	padding: 15px;
-	padding-top: 0px; 
-	padding-left: 0px; 
+	padding-top: 0px;
+	padding-left: 0px;
 	padding-bottom: 0px;
 	border-top: none;
 }
@@ -2479,7 +2498,7 @@ ul#myTab {
 	-webkit-transition: all 0.3s ease-in-out 0s;
 	-o-transition: all 0.3s ease-in-out 0s;
 	transition: all 0.3s ease-in-out 0s;
-	
+
 }
 .nav-tabs > li > a .fa {
 	margin-right: 10px;
@@ -2643,7 +2662,7 @@ h4.widget-title {
 	-webkit-border-radius:4px;
 	-o-border-radius:4px;
 	-moz-border-radius:4px;
-	
+
 }
 .widget-side.second {
     margin-top: 2em;
@@ -2667,7 +2686,7 @@ h4.widget-title {
     color: #222;
     font-weight: 400;
     display: inline-block;
-    margin-top: 1em; 
+    margin-top: 1em;
     text-decoration: none;
     border: 1px solid #D6D4D4;
 	border-radius: 4px;
@@ -2740,7 +2759,7 @@ p.lom{
     font-size: 0.6em;
     padding-top: 17px;
     font-weight: 400;
-	
+
 	}
 .in-left{
 	float:left;
@@ -2928,7 +2947,7 @@ text-decoration:none;
 	}
 	.content-grid:hover .inner-info {
 		padding: 10px 10px;
-		width:227px; 
+		width:227px;
 	}
 	h4.tittle {
 		margin-left: 68%;

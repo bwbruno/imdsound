@@ -111,7 +111,7 @@ class PdoUserRepository implements UserRepository
         foreach ($result as $row) {
             $user = $this->hydrateUser($row);
             if(isset($row['admin_id_admin'])) {
-                $artist = new Artist($row['email'], $row['admin_id_admin']);
+                $artist = new Artist($row['email'], null, null, $row['admin_id_admin']);
                 $user->setArtist($artist);
             }
             $userWithArtistList[] = $user;

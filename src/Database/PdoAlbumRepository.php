@@ -127,13 +127,8 @@ class PdoAlbumRepository
 
         $album = $this->hydrateAlbum($row);
 
-
-        $artist = new Artist(  $row['user_email'], $row['admin_id_admin']);
-        $artist->setName($row['artname']);
-        $artist->setDescription($row['description']);
-
+        $artist = new Artist(  $row['user_email'], $row['artname'], $row['description'],  $row['admin_id_admin']);
         $album->setArtist($artist);
-
 
         return $album;
     }

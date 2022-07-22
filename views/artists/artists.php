@@ -6,6 +6,8 @@
 
     <div class="main-content">
         <?php include __DIR__ . '/../components/header-section.php'; ?>
+        <?php include __DIR__ . '/modals/form-artist-create.php'; ?>
+
 
         <div id="page-wrapper">
 
@@ -13,7 +15,10 @@
                 <div class="tittle-head two">
                     <h3 class="tittle">
                         <?= $title ?>
-                        <a class="new btn btn-primary btn-sm" href="/users" role="button">Adicionar</a>
+                        <a class="input_genre new btn btn-primary btn-sm" role="button"
+                           href="/users">
+                            Adicionar
+                        </a>
                     </h3>
                     <div class="clearfix"> </div>
                 </div>
@@ -36,11 +41,14 @@
                                 <td><?= $artist->name(); ?></td>
                                 <td><?= $artist->description(); ?></td>
                                 <td>
-                                        <span>
-                                            <a href="/user?id=<?= $artist->user_email(); ?>" class="btn btn-danger btn-sm">
-                                                Excluir
-                                            </a>
-                                        </span>
+                                    <span>
+                                        <a class="btn btn-info btn-sm editar">
+                                            Editar
+                                        </a>
+                                        <a href="/artist?id=<?= $artist->user_email(); ?>" class="btn btn-danger btn-sm">
+                                            Excluir
+                                        </a>
+                                    </span>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -54,13 +62,29 @@
 <?php include __DIR__ . '/../components/footer-section.php'; ?>
 
     <script>
-        $.ajax({
-            type: "POST",
-            url: "update-artist.php",
-            data: $('select#artista').serialize()
-        }).done(function(data) {
+        $(document).ready(function(){
+            $('.editar').on('click', function(){
 
+                $tr = $(this).closest('tr');
+                let data = $tr.children("td").map(function(){
+                    return $(this).text();
+                }).get();
+
+                $('input[name=email]').val(data[0]);
+                $('input[name=name]').val(data[1]);
+                $('textarea[name=descricao]').val(data[2]);
+
+                $('#modalLabel').text('Editar artista');
+                
+                $('#form_add_artist').modal('show');
+            });
         });
+
+        $('#form_add_artist').on('hidden.bs.modal', function (e) {
+            $('#modalLabel').text = 'Criar artista';
+            $('input[name=name]').val('Nome');
+            $('textarea[name=descricao]').val('Descrição');
+        })
     </script>
 
 <?php include __DIR__ . '/../layouts/fim-html.php'; ?>

@@ -31,13 +31,12 @@
                         foreach($albums as $key => $album) { ?>
 
                             <div class="col-md-3 artist-grid">
-                                <a  href="album?id=<?= $album->getId(); ?>">
-                                    <img src="images/a<?= $key+1 ?>.jpg" title="allbum-name">
+                                <a  href="/album?id=<?= $album->getId(); ?>">
+                                    <div class="square" style="background-image:url('<?= $album->getPictureURL(); ?>');">
+                                    </div>
                                 </a>
-                                <a href="album?id=<?= $album->getId(); ?>">
-                                    <i class="glyphicon glyphicon-play-circle"></i>
-                                </a>
-                                <a class="art" href="album?id=<?= $album->getId(); ?>"><?= $album->getName(); ?></a>
+
+                                <a class="art" href="/album?id=<?= $album->getId(); ?>"><?= $album->getName(); ?></a>
                             </div>
 
                             <?php

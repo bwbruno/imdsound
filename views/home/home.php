@@ -53,7 +53,8 @@
 
 							<div class="col-md-3 artist-grid">
 								<a  href="single.html">
-									<img src="images/a<?= $key+1 ?>.jpg" title="allbum-name">
+                                    <div class="square" style="background-image:url('uploads/assinatura-email-bruno.png');">
+                                    </div>
 								</a>
 								<a href="single.html">
 									<i class="glyphicon glyphicon-play-circle"></i>
@@ -65,7 +66,8 @@
 									if ($key == 5) break;						
 								}
 							?>
-						</div>
+                            <div class="clearfix"></div>
+                        </div>
 					<?php		
 						}
 					?>

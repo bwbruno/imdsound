@@ -6,6 +6,7 @@
 
 		<div class="main-content">
 			<?php include __DIR__ . '/../components/header-section.php'; ?>
+            <?php include __DIR__ . '/../artists/modals/form-artist-create.php'; ?>
 
 			<div id="page-wrapper">
 				
@@ -36,7 +37,7 @@
                                     <td><?= $usuario->name(); ?></td>
                                     <td><?= $usuario->password(); ?></td>
                                     <td>
-                                    <select id="artista" name="artista"
+                                    <select id="artista" name="artista" <?= $usuario->isArtist() ? 'disabled' : '' ?>
                                         class="<?= $usuario->isArtist() ? 'btn-info' : 'btn-danger' ?>">
                                         <option value="nao">Não</option>
                                         <option
@@ -51,7 +52,7 @@
                                             <a href="/user?id=<?= $usuario->email(); ?>" class="btn btn-info btn-sm">
                                                 Alterar
                                             </a>
-                                            <a href="/user?id=<?= $usuario->email(); ?>" class="btn btn-danger btn-sm">
+                                            <a href="/user?id=<?= $usuario->email(); ?>" class="btn disabled btn-danger btn-sm">
                                                 Excluir
                                             </a>
                                         </span>    
@@ -68,22 +69,44 @@
 	<?php include __DIR__ . '/../components/footer-section.php'; ?>
 
     <script>
-        $('select#artista').change(function(){
-            $.ajax({
-                type: 'POST',
-                url: 'artist/promotion',
-                data: { 'email': $(this).val() },
-                success: function(response){
-                    alert(response);
-                    //alert(JSON.parse(response).user_email + ' promovido.');
-                    return true;
-                },
-                error: function (request, status, error) {
-                    alert(request.responseText);
-                },
-                dataType: 'html'
+            $(document).ready(function(){
+                $('select#artista').change('click', function(){
+
+                    $tr = $(this).closest('tr');
+                    let data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                    $('input[name=email]').val(data[0]);
+                    $('input[name=name]').val('Nome');
+                    $('textarea[name=descricao]').val('Descrição');
+
+                    $('#modalLabel').text('Promover usuário a artista');
+
+                    $('#form_add_artist').modal('show');
+                });
             });
-        });
+
+            $('#form_add_artist').on('hidden.bs.modal', function (e) {
+                $('#modalLabel').text = 'Promover usuário a artista';
+                $('input[name=name]').val('Nome');
+                $('textarea[name=descricao]').val('Descrição');
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'artist/create',
+                    data: { 'email': $(this).val() },
+                    success: function(response){
+                        //alert(response);
+                        alert(JSON.parse(response).user_email + ' promovido.');
+                        return true;
+                    },
+                    error: function (request, status, error) {
+                        alert(request.responseText);
+                    },
+                    dataType: 'html'
+                });
+            })
     </script>
 
 <?php include __DIR__ . '/../layouts/fim-html.php'; ?>

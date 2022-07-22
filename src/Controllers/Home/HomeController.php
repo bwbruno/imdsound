@@ -3,6 +3,7 @@
 namespace IMDSound\Controllers\Home;
 
 use IMDSound\Database\ConnectionCreator;
+use IMDSound\Database\PdoAlbumRepository;
 use IMDSound\Database\PdoUserRepository;
 use IMDSound\Controllers\ControllerComHtml;
 use IMDSound\Controllers\InterfaceControladorRequisicao;
@@ -13,7 +14,7 @@ class HomeController extends ControllerComHtml implements InterfaceControladorRe
     public function __construct()
     {
         $pdo = ConnectionCreator::createConnection();
-        $this->userRepository = new PdoUserRepository($pdo);
+        $this->albumsRepository = new PdoAlbumRepository($pdo);
 
     }
 
@@ -22,7 +23,7 @@ class HomeController extends ControllerComHtml implements InterfaceControladorRe
     {
         echo $this->renderizaHtml('home/home.php', [
             'titulo' => 'Lista de Ano',
-            'usuarios' => $this->userRepository->allUsers()
+            'usuarios' => $this->albumsRepository->allUsers()
         ]);
     }
 }

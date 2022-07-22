@@ -9,7 +9,6 @@ class ConnectionCreator
 
     public static function createConnection(): PDO
     {
-        
         $host = $_ENV['CONNECTION_HOST'];
         $port = $_ENV['PORT_CONTAINER'];
         $db_name = $_ENV['DB_DATABASE'];

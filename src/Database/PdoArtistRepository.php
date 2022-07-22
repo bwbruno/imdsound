@@ -24,6 +24,16 @@ class PdoArtistRepository
         return $this->hydrateListArtist($stmt);
     }
 
+    public function save(Artist $artist): bool {
+        $oldArtist = $this->findByEmail($artist->user_email());
+
+        if($oldArtist->user_email() == null) {
+            return $this->insert($artist);
+        }
+
+        return $this->update($artist);
+    }
+
     public function insert(Artist $artist): bool
     {
         $insertQuery =
@@ -42,20 +52,21 @@ class PdoArtistRepository
         return $success;
     }
 
-    private function update(User $user): bool
+    public function update(Artist $artist): bool
     {
-        $updateQuery = 'UPDATE users SET name = :name WHERE id = :id;';
+        $updateQuery = 'UPDATE artist SET name = :name, description = :description WHERE user_email = :user_email;';
         $stmt = $this->connection->prepare($updateQuery);
-        $stmt->bindValue(':name', $user->name());
-        $stmt->bindValue(':id', $user->email(), PDO::PARAM_INT);
+        $stmt->bindValue(':name', $artist->name());
+        $stmt->bindValue(':description', $artist->description());
+        $stmt->bindValue(':user_email', $artist->user_email(), PDO::PARAM_STR);
 
         return $stmt->execute();
     }
 
-    public function remove(User $user): bool
+    public function remove(Artist $artist): bool
     {
         $stmt = $this->connection->prepare('DELETE FROM users WHERE id = ?;');
-        $stmt->bindValue(1, $user->email(), PDO::PARAM_INT);
+        $stmt->bindValue(1, $artist->email(), PDO::PARAM_INT);
 
         return $stmt->execute();
     }
@@ -66,8 +77,9 @@ class PdoArtistRepository
         $stmt->execute([$email]);
         $row = $stmt->fetch();
 
-        return $this->hydrateArtist($row);;
+        return $this->hydrateArtist($row);
     }
+
     public function hydrateArtist($data) : Artist
     {
         return new Artist(

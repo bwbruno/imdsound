@@ -12,9 +12,17 @@ class Artist implements \JsonSerializable
     private $admin_id_admin;
     private array $albums;
 
-    public function __construct($user_email, $admin_id_admin)
+    /**
+     * @param $user_email
+     * @param string $name
+     * @param string $description
+     * @param $admin_id_admin
+     */
+    public function __construct($user_email, ?string $name, ?string $description, ?string $admin_id_admin)
     {
         $this->user_email = $user_email;
+        $this->name = $name;
+        $this->description = $description;
         $this->admin_id_admin = $admin_id_admin;
     }
 
@@ -70,6 +78,15 @@ class Artist implements \JsonSerializable
     {
         $this->description = $description;
     }
+
+    /**
+     * @param mixed $user_email
+     */
+    public function setUserEmail($user_email): void
+    {
+        $this->user_email = $user_email;
+    }
+
 
     public function jsonSerialize()
     {

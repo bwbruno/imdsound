@@ -9,7 +9,7 @@ use IMDSound\Controllers\Albums\AlbumListController;
 use IMDSound\Controllers\Albums\AlbumMyListController;
 use IMDSound\Controllers\Albums\AlbumCreateController;
 use IMDSound\Controllers\Artist\ArtistListController;
-use IMDSound\Controllers\Artist\ArtistPromotionController;
+use IMDSound\Controllers\Artist\ArtistCreateController;
 use IMDSound\Controllers\Features\ListFeaturesController;
 use IMDSound\Controllers\Home\HomeController;
 use IMDSound\Controllers\Login\LoginController;
@@ -30,7 +30,7 @@ return [
     '/user/create' => UserCreateController::class,
     '/users' => UserListController::class,
     '/artists' => ArtistListController::class,
-    '/artist/promotion' => ArtistPromotionController::class,
+    '/artist/create' => ArtistCreateController::class,
     '/music_genre/list' => MusicGenreListController::class,
     '/music_genre/create' => MusicGenreCreateController::class,
     '/music_genre/remove' => MusicGenreDeleteController::class,

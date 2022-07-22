@@ -15,9 +15,9 @@
             <li class="active"><a href="/home"><i class="lnr lnr-home"></i><span>Início</span></a></li>
             <li><a href="/artists"><i class="lnr lnr-users"></i> <span>Artistas</span></a></li>
             <li><a href="/albums"><i class="lnr lnr-music-note"></i> <span>Álbuns</span></a></li>
-            <li><a href="/albums"><i class="lnr lnr-indent-increase"></i> <span>Playlists</span></a>
+            <li><a href="/album?id=1"><i class="lnr lnr-indent-increase"></i> <span>Playlists</span></a>
             </li>
-            <li><a href="/album?id=1"><i class="lnr lnr-heart"></i> <span>Favoritos</span></a></li>
+            <li><a href="/my-albums"><i class="lnr lnr-heart"></i> <span>Favoritos</span></a></li>
 
             <li class="menu-list"><a href="/#"><i class="lnr lnr-pencil"></i><span>Admin</span></a>
                 <ul class="sub-menu-list">
