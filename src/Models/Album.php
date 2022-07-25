@@ -6,6 +6,7 @@ class Album extends ImdList
 {
     private \DateTimeInterface $dataCadastro;
     private ?Artist $artist;
+    private array $musics = [];
 
     public function getDataCadastro()
     {
@@ -32,6 +33,22 @@ class Album extends ImdList
     public function setArtist(?Artist $artist): void
     {
         $this->artist = $artist;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMusics(): array
+    {
+        return $this->musics;
+    }
+
+    /**
+     * @param Music|null $music
+     */
+    public function addMusic(Music $music): void
+    {
+        $this->musics = $music;
     }
 
 

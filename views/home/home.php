@@ -23,11 +23,11 @@
 						]
 					?>
 
-					<?php foreach($titles as $key => $title) { ?>
+					<?php foreach($albums_chunked as $key => $albums) { ?>
 						<div class="albums fourth browse-inner">
 							<div class="tittle-head two">
 								<h3 class="tittle">
-									<?= $title ?> 
+									<?= $titles[$key] ?>
 									<span class="new">View</span>
 								</h3>
 								<a href="browse.html">
@@ -36,39 +36,29 @@
 								<div class="clearfix"> </div>
 							</div>
 
-
-							<?php 
-								$arts = [
-									'Sukhwinder singh',
-									'Shekhar Ravjiani',
-									'Shalmali',
-									'Sajid-Wajid',
-									'Atif Aslam',
-									'A R Rahman',
-									'Shreya Ghoshal',
-								]
-							?>
-
-							<?php foreach($arts as $key => $art) { ?>
+							<?php
+                            /* @var \IMDSound\Models\Album $album */
+                            foreach($albums as $key => $album) {
+                            ?>
 
 							<div class="col-md-3 artist-grid">
 								<a  href="single.html">
-                                    <div class="square" style="background-image:url('uploads/assinatura-email-bruno.png');">
+                                    <div class="square" style="background-image:url('<?= $album->getPictureURL(); ?>');">
                                     </div>
 								</a>
 								<a href="single.html">
 									<i class="glyphicon glyphicon-play-circle"></i>
 								</a>
-								<a class="art" href="single.html"><?= $art ?></a>
+								<a class="art" href="single.html"><?= $album->getName() ?></a>
 							</div>
 
 							<?php
-									if ($key == 5) break;						
 								}
 							?>
                             <div class="clearfix"></div>
                         </div>
-					<?php		
+					<?php
+                            if ($key == sizeof($titles)) break;
 						}
 					?>
 						

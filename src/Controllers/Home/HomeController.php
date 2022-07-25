@@ -22,8 +22,7 @@ class HomeController extends ControllerComHtml implements InterfaceControladorRe
     public function processaRequisicao(): void
     {
         echo $this->renderizaHtml('home/home.php', [
-            'titulo' => 'Lista de Ano',
-            'usuarios' => $this->albumsRepository->allUsers()
+            'albums_chunked' => array_chunk($this->albumsRepository->all(), 5)
         ]);
     }
 }
